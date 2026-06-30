@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Daily Drop",
+    "slug": "sportsdaily",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#185FA5"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "org.stonetoad.sportsdaily"
+    },
+    "android": {
+      "package": "org.stonetoad.sportsdaily"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
