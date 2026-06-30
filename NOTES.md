@@ -80,6 +80,27 @@ generator** builds the question bank from real data and bakes it into the app.
 
 ## DESIGN DIRECTION — make it look incredible
 
+> **STATUS: built (first pass).** The brief below was implemented. What landed:
+> - **Type:** Oswald (condensed grotesque — prompts/scores/numerals) + Inter
+>   (options/labels), loaded via `expo-font`/`useFonts` in `App.js` with direct
+>   `.ttf` requires (only 8 weights bundle, not the whole family). Family names
+>   live in `theme.FONTS`; use `type.display*` (Oswald) and `type.body*` (Inter).
+> - **Palette:** cool **card-stock** light + **stadium-dark** dark (no warm cream).
+>   Richer MLB-blue / NFL-red each with a deep secondary + gradient (`LEAGUES`),
+>   plus one **electric amber** (`theme.electric`) used only on streaks/wins.
+> - **Signature element:** the **daily scorecard** on `ResultsScreen` — a
+>   collectible card (deep gradient, foil-sheen sweep, ⚾🏈 marks, ticket date
+>   stamp, designed ✓/✕ grid, electric streak strip) built to be screenshotted.
+> - **Motion:** confident slide/wipe between questions, color-snap answer lock-in
+>   (haptics kept), score count-up + card assemble. All gated on
+>   `useReducedMotion()` (`src/hooks/useReducedMotion.js`).
+> - New deps: `expo-font`, `expo-linear-gradient`, `@expo-google-fonts/oswald`,
+>   `@expo-google-fonts/inter`. Verified with `npx expo export` (clean bundle).
+> - **Not yet done:** visual QA on device (run Expo Go), app icon + native splash
+>   (`app.json` splash still the old blue — that's part of the EAS/icon step).
+>
+> _Original brief preserved below for reference / further polish._
+
 The current UI is functional but plain: flat cards, system font, basic team
 colors. Goal is a polished, distinctive sports-quiz app that feels premium.
 This is the area to invest in. Treat it like a real design brief.
