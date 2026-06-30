@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated, Pressable, Share, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { captureRef } from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
 import { type, radius, space, elevate } from '../theme/theme';
 import useReducedMotion from '../hooks/useReducedMotion';
 
@@ -24,10 +26,11 @@ function verdict(score, total) {
   return 'Shut out. Run it back.';
 }
 
-export default function ResultsScreen({ score, total, streak, results, questions, date, theme }) {
+export default function ResultsScreen({ score, total, streak, results, questions, date, theme, onOpenStats }) {
   const insets = useSafeAreaInsets();
   const reduceMotion = useReducedMotion();
   const { width } = useWindowDimensions();
+  const cardRef = useRef(null);
 
   const scale = useRef(new Animated.Value(reduceMotion ? 1 : 0.85)).current;
   const fade = useRef(new Animated.Value(reduceMotion ? 1 : 0)).current;
@@ -61,10 +64,25 @@ export default function ResultsScreen({ score, total, streak, results, questions
   }, [reduceMotion]);
 
   const emojiGrid = cells.map((c) => (c ? '🟩' : '🟥')).join('');
-  const onShare = () => {
-    Share.share({
-      message: `Daily Drop ⚾🏈  ${stampDate(date)}\n${score}/${total}  ${emojiGrid}\n🔥 ${streak}-day streak — daily MLB + NFL quiz`,
-    });
+  const shareText = `Daily Drop ⚾🏈  ${stampDate(date)}\n${score}/${total}  ${emojiGrid}\n🔥 ${streak}-day streak — daily MLB + NFL quiz`;
+
+  // Prefer sharing the rendered scorecard as an image — far more clickable in a
+  // feed than text. Falls back to the emoji-grid text (e.g. in Expo Go, where
+  // the native capture module isn't available).
+  const onShare = async () => {
+    try {
+      const uri = await captureRef(cardRef, { format: 'png', quality: 1 });
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri, {
+          mimeType: 'image/png',
+          dialogTitle: 'Share your Daily Drop',
+        });
+        return;
+      }
+    } catch {
+      // fall through to text
+    }
+    Share.share({ message: shareText });
   };
 
   const sheenX = sheen.interpolate({ inputRange: [-1, 1], outputRange: [-width, width] });
@@ -74,7 +92,7 @@ export default function ResultsScreen({ score, total, streak, results, questions
       <View style={styles.body}>
         <Animated.View style={{ width: '100%', opacity: fade, transform: [{ scale }] }}>
           {/* THE SCORECARD — a collectible, screenshot-ready object. */}
-          <View style={[styles.card, elevate(theme, 2)]}>
+          <View ref={cardRef} collapsable={false} style={[styles.card, elevate(theme, 2)]}>
             <LinearGradient
               colors={['#173A6B', '#0C1A30', '#080E1A']}
               start={{ x: 0, y: 0 }}
@@ -153,6 +171,13 @@ export default function ResultsScreen({ score, total, streak, results, questions
         >
           <Text style={styles.shareText}>Share result</Text>
         </Pressable>
+        <Pressable
+          onPress={onOpenStats}
+          accessibilityRole="button"
+          style={({ pressed }) => [styles.statsBtn, { opacity: pressed ? 0.6 : 1 }]}
+        >
+          <Text style={[styles.statsText, { color: theme.text }]}>📊  View your stats</Text>
+        </Pressable>
         <Text style={[styles.comeBack, { color: theme.textMuted }]}>
           New questions drop tomorrow
         </Text>
@@ -230,5 +255,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   shareText: { color: '#1A1200', fontSize: type.sizes.lg, ...type.display, letterSpacing: 0.5 },
-  comeBack: { marginTop: space(4), fontSize: type.sizes.sm, ...type.bodyMed, textAlign: 'center' },
+  statsBtn: { marginTop: space(4), alignSelf: 'center', paddingVertical: space(2) },
+  statsText: { fontSize: type.sizes.md, ...type.bodySemi },
+  comeBack: { marginTop: space(3), fontSize: type.sizes.sm, ...type.bodyMed, textAlign: 'center' },
 });

@@ -9,7 +9,7 @@ import MultipleChoice from '../components/MultipleChoice';
 import TypedAnswer from '../components/TypedAnswer';
 import useReducedMotion from '../hooks/useReducedMotion';
 
-export default function QuizScreen({ questions, pools, streak, theme, onFinish }) {
+export default function QuizScreen({ questions, pools, streak, theme, onFinish, onOpenStats }) {
   const insets = useSafeAreaInsets();
   const reduceMotion = useReducedMotion();
   const [idx, setIdx] = useState(0);
@@ -89,20 +89,24 @@ export default function QuizScreen({ questions, pools, streak, theme, onFinish }
             <Text style={[styles.brandSub, { color: theme.textMuted }]}>MLB · NFL</Text>
           </View>
         </View>
-        <View
-          style={[
+        <Pressable
+          onPress={onOpenStats}
+          accessibilityRole="button"
+          accessibilityLabel="View your stats"
+          style={({ pressed }) => [
             styles.streak,
             {
               backgroundColor: streak > 0 ? theme.electricSoft : theme.surfaceAlt,
               borderColor: streak > 0 ? theme.electric : theme.border,
+              opacity: pressed ? 0.7 : 1,
             },
           ]}
         >
-          <Text style={styles.streakFlame}>{streak > 0 ? '🔥' : '·'}</Text>
+          <Text style={styles.streakFlame}>{streak > 0 ? '🔥' : '📊'}</Text>
           <Text style={[styles.streakNum, { color: streak > 0 ? theme.electricText : theme.textMuted }]}>
             {streak}
           </Text>
-        </View>
+        </Pressable>
       </View>
 
       <ProgressDots questions={questions} results={results} current={idx} theme={theme} />

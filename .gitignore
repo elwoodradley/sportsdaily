@@ -4,3 +4,5 @@ dist/
 *.log
 .DS_Store
 generator/question_pool.json
+__pycache__/
+*.pyc

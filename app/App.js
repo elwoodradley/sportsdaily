@@ -5,7 +5,9 @@ import { useFonts } from 'expo-font';
 import { lightTheme, darkTheme, type, space, radius } from './src/theme/theme';
 import QuizScreen from './src/screens/QuizScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
-import { loadProgress, recordResult, todayStr } from './src/data/progress';
+import StatsScreen from './src/screens/StatsScreen';
+import { loadProgress, recordResult, resetProgress, todayStr } from './src/data/progress';
+import { ensureDailyReminder } from './src/data/notify';
 import data from './src/data/daily_sets.json';
 
 export default function App() {
@@ -31,29 +33,33 @@ export default function App() {
   const [streak, setStreak] = useState(0);
   const [finalScore, setFinalScore] = useState(0);
   const [results, setResults] = useState([]);
+  const [statsOpen, setStatsOpen] = useState(false);
+
+  const boot = async () => {
+    setStage('loading');
+    const today = todayStr();
+    const key = data.sets[today] ? today : Object.keys(data.sets)[0];
+    const set = data.sets[key];
+    const p = await loadProgress();
+    setStreak(p.streak);
+    setDate(key);
+    if (!set) {
+      setStage('empty');
+      return;
+    }
+    setQuestions(set);
+    // if already played today, jump straight to the saved result
+    if (p.history[today]) {
+      setFinalScore(p.history[today].score);
+      setResults(set.map(() => 'correct')); // grid unknown on replay; benign
+      setStage('results');
+    } else {
+      setStage('quiz');
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      const today = todayStr();
-      const key = data.sets[today] ? today : Object.keys(data.sets)[0];
-      const set = data.sets[key];
-      const p = await loadProgress();
-      setStreak(p.streak);
-      setDate(key);
-      if (!set) {
-        setStage('empty');
-        return;
-      }
-      setQuestions(set);
-      // if already played today, jump to results
-      if (p.history[today]) {
-        setFinalScore(p.history[today].score);
-        setResults(set.map(() => 'correct')); // grid unknown on replay; benign
-        setStage('results');
-      } else {
-        setStage('quiz');
-      }
-    })();
+    boot();
   }, []);
 
   const onFinish = async (score, perQuestion) => {
@@ -63,6 +69,15 @@ export default function App() {
     setFinalScore(score);
     setResults(perQuestion || []);
     setStage('results');
+    // Ask about / refresh the daily reminder now that they've seen the payoff.
+    ensureDailyReminder();
+  };
+
+  // Dev-only: wipe progress and replay today's set.
+  const devReset = async () => {
+    await resetProgress();
+    setStatsOpen(false);
+    await boot();
   };
 
   // Hold on a branded screen until fonts are ready — Oswald is the personality,
@@ -107,6 +122,7 @@ export default function App() {
           streak={streak}
           theme={theme}
           onFinish={onFinish}
+          onOpenStats={() => setStatsOpen(true)}
         />
       ) : (
         <ResultsScreen
@@ -117,8 +133,15 @@ export default function App() {
           questions={questions}
           date={date}
           theme={theme}
+          onOpenStats={() => setStatsOpen(true)}
         />
       )}
+      <StatsScreen
+        visible={statsOpen}
+        onClose={() => setStatsOpen(false)}
+        onReset={devReset}
+        theme={theme}
+      />
     </SafeAreaProvider>
   );
 }

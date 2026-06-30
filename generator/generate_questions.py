@@ -46,6 +46,33 @@ def _get_csv(url):
     return list(csv.DictReader(io.StringIO(text)))
 
 
+# Counting stats whose leader value is a whole number we can quiz on ("how many
+# home runs did the leader hit?"). Rate stats (ERA, AVG) are excluded — plausible
+# numeric distractors for a decimal don't read cleanly.
+COUNTABLE_STATS = {"strikeOuts", "wins", "homeRuns", "runsBattedIn", "stolenBases", "hits"}
+
+
+def _value_options(value):
+    """Four distinct, plausible integer options around a leader's stat value."""
+    try:
+        v = int(round(float(value)))
+    except (TypeError, ValueError):
+        return None, None
+    if v < 4:
+        return None, None
+    cands = {v, v - 2, v + 3, int(round(v * 0.88)), v + 6}
+    cands = sorted({c for c in cands if c > 0})
+    # keep the correct value plus three others closest to it
+    others = [c for c in cands if c != v]
+    others.sort(key=lambda c: abs(c - v))
+    opts = [v] + others[:3]
+    if len(opts) < 4:
+        return None, None
+    opts = [str(o) for o in opts]
+    random.shuffle(opts)
+    return opts, str(v)
+
+
 def mlb_leader_questions(seasons, categories):
     out = []
     for season in seasons:
@@ -59,12 +86,13 @@ def mlb_leader_questions(seasons, categories):
             except Exception as e:
                 print(f"  [mlb] skip {label} {season}: {e}", file=sys.stderr)
                 continue
-            leaders = []
+            leaders, values = [], {}
             for cat in data.get("leagueLeaders", []):
                 for entry in cat.get("leaders", []):
                     name = entry.get("person", {}).get("fullName")
                     if name:
                         leaders.append(name)
+                        values.setdefault(name, entry.get("value"))
             seen, ranked = set(), []
             for n in leaders:
                 if n not in seen:
@@ -85,6 +113,20 @@ def mlb_leader_questions(seasons, categories):
                 "valid_as_of": str(season),
                 "source": "MLB Stats API",
             })
+            # bonus "how many" question on the same leader for counting stats
+            if stat in COUNTABLE_STATS:
+                opts, ans = _value_options(values.get(correct))
+                if opts:
+                    out.append({
+                        "id": f"mlb_{stat}_{season}_value",
+                        "league": "MLB",
+                        "type": "multiple_choice",
+                        "prompt": f"How many {label} did the MLB leader, {correct}, have in {season}?",
+                        "options": opts,
+                        "answer": ans,
+                        "valid_as_of": str(season),
+                        "source": "MLB Stats API",
+                    })
     return out
 
 
@@ -118,6 +160,54 @@ def nfl_college_questions(rows, relevant_ids, max_q=200):
             "source": "nflverse",
         })
     return out, college_pool
+
+
+def nfl_jersey_questions(rows, relevant_ids, max_q=60):
+    """Multiple-choice 'what number does X wear?' for notable skill players."""
+    def is_relevant(r):
+        pid = r.get("gsis_id") or r.get("player_id")
+        return pid in relevant_ids
+
+    def jersey(r):
+        raw = (r.get("jersey_number") or "").strip()
+        try:
+            n = int(float(raw))
+        except (TypeError, ValueError):
+            return None
+        return n if 0 <= n <= 99 else None
+
+    pool = [
+        r for r in rows
+        if jersey(r) is not None and r.get("full_name")
+        and r.get("position") in {"QB", "RB", "WR", "TE"}
+        and (not relevant_ids or is_relevant(r))
+    ]
+    all_numbers = sorted({jersey(r) for r in pool})
+    random.shuffle(pool)
+    out = []
+    for r in pool[:max_q]:
+        n = jersey(r)
+        # distractors: other real jersey numbers, biased toward nearby values
+        pool_others = [x for x in all_numbers if x != n]
+        if len(pool_others) < 3:
+            continue
+        pool_others.sort(key=lambda x: abs(x - n))
+        near = pool_others[:8]
+        random.shuffle(near)
+        distractors = near[:3]
+        options = [str(x) for x in [n] + distractors]
+        random.shuffle(options)
+        out.append({
+            "id": f"nfl_jersey_{r.get('gsis_id') or r['full_name'].replace(' ', '_')}",
+            "league": "NFL",
+            "type": "multiple_choice",
+            "prompt": f"What jersey number does {r['full_name']} wear?",
+            "options": options,
+            "answer": str(n),
+            "valid_as_of": RELEVANCE_SEASON,
+            "source": "nflverse",
+        })
+    return out
 
 
 def build_relevant_ids(stats_rows, top_n=TOP_N_PER_POSITION):
@@ -241,9 +331,12 @@ def build_pool():
     if rows:
         college_q, college_pool = nfl_college_questions(rows, relevant_ids)
         draft_q = nfl_draft_questions(rows, relevant_ids)
-        print(f"  -> {len(college_q)} college + {len(draft_q)} draft questions")
+        jersey_q = nfl_jersey_questions(rows, relevant_ids)
+        print(f"  -> {len(college_q)} college + {len(draft_q)} draft + "
+              f"{len(jersey_q)} jersey questions")
         pool["questions"].extend(college_q)
         pool["questions"].extend(draft_q)
+        pool["questions"].extend(jersey_q)
         pool["autocomplete_pools"]["nfl_colleges"] = college_pool
 
     POOL_PATH.write_text(json.dumps(pool, indent=2))

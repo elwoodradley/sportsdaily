@@ -19,7 +19,48 @@ generator** builds the question bank from real data and bakes it into the app.
 
 ---
 
+## Setup — resume on a new machine
+
+Prereqs: **Node 18+ & npm**, **Git**, **Python 3** (generator is stdlib-only —
+no pip installs), and either the **Expo Go** app on a phone or iOS/Android
+simulators. The committed `daily_sets.json` means the app runs immediately —
+you do NOT need to regenerate questions to start.
+
+```bash
+git clone https://github.com/elwoodradley/sportsdaily.git
+cd sportsdaily/app
+npm install            # pulls all deps incl. fonts, linear-gradient,
+                       # notifications, sharing, view-shot (all in package.json)
+npx expo start         # scan QR in Expo Go, or press i / a for a simulator
+```
+
+Regenerate / extend the question bank (needs **open internet** — corporate or
+sandboxed networks often block the sports APIs):
+
+```bash
+cd ../generator
+python3 generate_questions.py --all 30     # fetch + build 30 days, auto-copies
+                                           # the bundle into app/src/data/
+```
+
+**What a more powerful machine unlocks:** three features are stubbed out in
+Expo Go and only run in a **native dev build** — the daily notification
+*firing*, **image sharing**, and (later) **AdMob**. With Xcode / Android Studio
+installed you can make a dev build and test them for real:
+
+```bash
+cd ../app
+npx expo run:ios       # or: npx expo run:android  (first build is slow)
+```
+
+---
+
 ## Current state (where we are)
+
+- **Two build passes are in** (see sections below): the **design pass**
+  (custom fonts, palette, scorecard, motion) and the **retention/growth pass**
+  (real streak persistence, stats screen, daily reminder, image share, more
+  question types). App bundles clean (`npx expo export`).
 
 - App **runs in Expo Go** on a physical iPhone. Works.
 - Generator pulls **live data** and produces real questions:
@@ -27,7 +68,7 @@ generator** builds the question bank from real data and bakes it into the app.
   - NFL: `nflverse` roster (player college, draft) + player stats (for ranking)
 - NFL questions are **filtered by playing time** so we don't ask about obscure
   practice-squad players. Controlled by `TOP_N_PER_POSITION` in the generator
-  (currently **40** = star/starter level). 150 was too loose (got "Tip Reiman").
+  (currently **75**). Lower it (~40) for stars-only; 150 was too loose.
 - Repo is on GitHub under user **elwoodradley**, pushed.
 
 ## Decisions locked
@@ -57,11 +98,11 @@ generator** builds the question bank from real data and bakes it into the app.
 
 ## GOTCHAS — read before building
 
-- **`app/src/data/progress.js` has a TEMPORARY HACK.** The first line of
-  `loadProgress()` is `return { streak: 0, lastPlayed: null, history: {} };`
-  added during dev so the quiz can be replayed (otherwise it locks to one play
-  per day and shows a stale score). **REMOVE that line before shipping** or
-  scores/streaks won't persist. The real logic is right below it.
+- **Persistence is now REAL (the old dev hack is gone).** `progress.js` saves
+  streak/maxStreak/history to AsyncStorage, so the quiz locks to one play per
+  day and jumps to the saved result on replay — this scarcity *is* the game.
+  To replay during dev, open **Stats → "Reset progress (dev)"** (only rendered
+  when `__DEV__`). `computeStats()` rolls history up for the stats screen.
 - **Bundle only has ~30 days of questions.** Generate more (`--all 365`) before
   a real launch, or the app runs dry.
 - **MLB question pool is small** (~32–80 depending on seasons/categories). To
@@ -172,14 +213,43 @@ The current components (`LeagueBadge`, `MultipleChoice`, `TypedAnswer`,
 
 ---
 
+## Retention / growth / money (built — second pass)
+
+Added the engine pieces a daily-quiz app lives on, all no-backend:
+- **Daily local reminder** (`app/src/data/notify.js`, `expo-notifications`) —
+  schedules a ~9am repeating local notification after the first finished quiz.
+  Local-only (no push tokens/server); needs a dev/EAS build to fire — no-ops in
+  Expo Go. Asks permission once (flag in AsyncStorage).
+- **Stats screen** (`app/src/screens/StatsScreen.jsx`, a Modal) — played,
+  accuracy, current/best streak, score distribution, perfect-cards count. Opens
+  from the streak chip (quiz) and a "View stats" button (results).
+- **Share-as-image** — results "Share" captures the scorecard to a PNG
+  (`react-native-view-shot`) and shares via `expo-sharing`; falls back to the
+  emoji-grid text (e.g. in Expo Go). Image shares are the main free growth loop.
+- **More question variety** (generator): MLB "how many … did the leader have?"
+  magnitude questions (counting stats only) + NFL "what jersey number does X
+  wear?". Re-run `python generate_questions.py --all 30` to bake them in.
+
+**Money plan:** ship FREE. AdMob interstitial on the results screen at
+EAS-build time (`react-native-google-mobile-ads` — needs a dev build, NOT Expo
+Go), optional "remove ads" IAP later. Revenue scales with DAU, so treat it as a
+volume outcome, not an early goal.
+
+⚠️ **Trademark:** "MLB"/"NFL" are protected and league/team logos are off-limits.
+Trivia *facts* are fine, but add a visible "Not affiliated with or endorsed by
+MLB/NFL" disclaimer and avoid official logos — especially once monetized.
+
 ## File map
 ```
 generator/generate_questions.py   # builds the question bank from real data
-app/App.js                        # flow: quiz -> results, streak, dark mode
-app/src/screens/QuizScreen.jsx    # question card, transitions
-app/src/screens/ResultsScreen.jsx # score reveal, streak, share grid
+app/App.js                        # flow: quiz -> results, stats modal, fonts, reminder
+app/src/screens/QuizScreen.jsx    # question card, league-dressed header, transitions
+app/src/screens/ResultsScreen.jsx # the daily scorecard, count-up, image share
+app/src/screens/StatsScreen.jsx   # stats modal (streak, accuracy, distribution)
 app/src/components/                # LeagueBadge, MultipleChoice, TypedAnswer, ProgressDots
+app/src/hooks/useReducedMotion.js  # gates all animation
 app/src/data/daily_sets.json      # the baked-in question bank (generated)
-app/src/data/progress.js          # streak persistence (HAS DEV HACK - see gotchas)
-app/src/theme/theme.js            # palette, type scale, league colors
+app/src/data/progress.js          # streak/stats persistence + computeStats + dev reset
+app/src/data/notify.js            # local daily reminder (expo-notifications)
+app/src/theme/theme.js            # fonts, palette, type scale, league colors, elevate()
 ```
