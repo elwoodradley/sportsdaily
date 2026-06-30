@@ -4,6 +4,7 @@ const KEY = 'sportsdaily_progress_v1';
 
 // shape: { streak, lastPlayed (ISO date), history: { [date]: {score, total} } }
 export async function loadProgress() {
+  return { streak: 0, lastPlayed: null, history: {} };
   try {
     const raw = await AsyncStorage.getItem(KEY);
     if (!raw) return { streak: 0, lastPlayed: null, history: {} };

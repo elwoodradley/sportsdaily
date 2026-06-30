@@ -1,85 +1,94 @@
 {
   "autocomplete_pools": {
     "nfl_colleges": [
-      "Akron",
       "Alabama",
-      "Alabama-Birmingham",
-      "Arizona",
+      "Arizona State",
       "Arkansas",
       "Auburn",
-      "Boise State",
       "Boston College",
+      "Bowling Green",
       "Brigham Young",
-      "Buffalo",
-      "Central Florida",
+      "California",
+      "Central Michigan",
       "Cincinnati",
       "Clemson",
-      "Colorado State",
-      "Dayton",
+      "Coastal Carolina",
       "Delaware",
+      "Drake",
+      "Duke",
+      "East Central",
+      "Eastern Illinois",
       "Eastern Kentucky",
       "Eastern Washington",
+      "Florida",
       "Florida Atlantic",
+      "Florida International",
       "Florida State",
+      "Fresno State",
       "Georgia",
-      "Georgia Southern",
+      "Georgia Tech",
       "Illinois",
       "Indiana",
       "Iowa",
+      "Iowa State",
       "Kentucky",
-      "Liberty",
-      "Lock Haven",
       "Louisiana State",
-      "Louisiana-Monroe",
       "Louisville",
-      "Malone",
-      "Marshall",
       "Maryland",
       "Memphis",
-      "Miami",
       "Michigan",
+      "Michigan State",
+      "Minn. State-Mankato",
       "Minnesota",
+      "Mississippi",
+      "Mississippi State",
       "Missouri",
+      "Nevada",
+      "North Carolina",
       "North Carolina State",
-      "Northern Iowa",
-      "Northwestern",
+      "North Dakota State",
       "Notre Dame",
       "Ohio State",
       "Oklahoma",
       "Oklahoma State",
+      "Old Dominion",
       "Oregon",
+      "Oregon State",
       "Penn State",
       "Pittsburgh",
-      "Prairie View",
       "Purdue",
-      "Samford",
-      "San Diego",
+      "Rutgers",
+      "San Diego State",
+      "San Jose State",
+      "Shepherd",
       "South Alabama",
       "South Carolina",
-      "Southeast Missouri",
-      "Southeastern Louisiana",
+      "South Dakota State",
+      "Southern Arkansas",
       "Southern California",
-      "Southern Illinois",
+      "Southern Methodist",
+      "Southern Mississippi",
       "Stanford",
-      "Temple",
+      "Syracuse",
       "Tennessee",
       "Texas",
       "Texas A&amp;M",
-      "Texas A&amp;M-Commerce",
       "Texas Christian",
       "Texas Tech",
+      "Texas-El Paso",
+      "Texas-San Antonio",
       "Toledo",
-      "Troy",
+      "Tulane",
       "UCLA",
       "Utah",
-      "Villanova",
+      "Utah State",
       "Virginia",
+      "Virginia Commonwealth",
       "Virginia Tech",
-      "Wake Forest",
       "Washington",
       "Washington State",
-      "Western Carolina",
-      "Western Illinois",
+      "West Alabama",
+      "Western Kentucky",
       "Wisconsin",
       "Youngstown State"
     ]
@@ -87,71 +96,13 @@
   "sets": {
     "2026-06-30": [
       {
-        "id": "mlb_earnedRunAverage_2024",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in ERA (lowest) in 2024?",
-        "options": [
-          "Chris Sale",
-          "Tarik Skubal",
-          "Ronel Blanco",
-          "Zack Wheeler"
-        ],
-        "answer": "Chris Sale",
-        "valid_as_of": "2024",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "mlb_homeRuns_2023",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in home runs in 2023?",
-        "options": [
-          "Shohei Ohtani",
-          "Kyle Schwarber",
-          "Pete Alonso",
-          "Matt Olson"
-        ],
-        "answer": "Matt Olson",
-        "valid_as_of": "2023",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_college_00-0037569",
+        "id": "nfl_college_00-0034830",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Peyton Hendershot attend?",
-        "answer": "Indiana",
+        "prompt": "What college did Hayden Hurst attend?",
+        "answer": "South Carolina",
         "accept": [
-          "Indiana"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "mlb_runsBattedIn_2023",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in RBIs in 2023?",
-        "options": [
-          "Pete Alonso",
-          "Matt Olson",
-          "Ozzie Albies",
-          "Kyle Tucker"
-        ],
-        "answer": "Matt Olson",
-        "valid_as_of": "2023",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_college_00-0036183",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Kristian Wilkerson attend?",
-        "answer": "Southeast Missouri",
-        "accept": [
-          "Southeast Missouri"
+          "South Carolina"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -173,30 +124,86 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0035719",
-        "league": "NFL",
+        "id": "mlb_homeRuns_2023",
+        "league": "MLB",
         "type": "multiple_choice",
-        "prompt": "In which round was Deebo Samuel Sr. drafted?",
+        "prompt": "Who led MLB in home runs in 2023?",
         "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
+          "Shohei Ohtani",
+          "Kyle Schwarber",
+          "Pete Alonso",
+          "Matt Olson"
         ],
-        "answer": "Round 2",
-        "valid_as_of": "2019",
+        "answer": "Matt Olson",
+        "valid_as_of": "2023",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_earnedRunAverage_2024",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in ERA (lowest) in 2024?",
+        "options": [
+          "Chris Sale",
+          "Tarik Skubal",
+          "Ronel Blanco",
+          "Zack Wheeler"
+        ],
+        "answer": "Chris Sale",
+        "valid_as_of": "2024",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_runsBattedIn_2023",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in RBIs in 2023?",
+        "options": [
+          "Pete Alonso",
+          "Matt Olson",
+          "Ozzie Albies",
+          "Kyle Tucker"
+        ],
+        "answer": "Matt Olson",
+        "valid_as_of": "2023",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0037809",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Chig Okonkwo attend?",
+        "answer": "Maryland",
+        "accept": [
+          "Maryland"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0036613",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Jaylen Waddle attend?",
+        "answer": "Alabama",
+        "accept": [
+          "Alabama"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
         "source": "nflverse"
       }
     ],
     "2026-07-01": [
       {
-        "id": "nfl_college_00-0038543",
+        "id": "nfl_college_00-0038117",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jaxon Smith-Njigba attend?",
-        "answer": "Ohio State",
+        "prompt": "What college did Wan'Dale Robinson attend?",
+        "answer": "Kentucky",
         "accept": [
-          "Ohio State"
+          "Kentucky"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -218,13 +225,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0036183",
+        "id": "nfl_college_00-0036613",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Kristian Wilkerson attend?",
-        "answer": "Southeast Missouri",
+        "prompt": "What college did Jaylen Waddle attend?",
+        "answer": "Alabama",
         "accept": [
-          "Southeast Missouri"
+          "Alabama"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -276,41 +283,43 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0026158",
+        "id": "nfl_draft_00-0037666",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Joe Flacco attend?",
-        "answer": "Delaware",
-        "accept": [
-          "Delaware"
+        "type": "multiple_choice",
+        "prompt": "In which round was Jalen Tolbert drafted?",
+        "options": [
+          "Round 2",
+          "Round 3",
+          "Round 4",
+          "Round 5"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 3",
+        "valid_as_of": "2022",
         "source": "nflverse"
       }
     ],
     "2026-07-02": [
       {
-        "id": "nfl_college_00-0037569",
+        "id": "nfl_college_00-0034830",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Peyton Hendershot attend?",
-        "answer": "Indiana",
+        "prompt": "What college did Hayden Hurst attend?",
+        "answer": "South Carolina",
         "accept": [
-          "Indiana"
+          "South Carolina"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0034159",
+        "id": "nfl_college_00-0036928",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Will Dissly attend?",
-        "answer": "Washington",
+        "prompt": "What college did Kyle Trask attend?",
+        "answer": "Florida",
         "accept": [
-          "Washington"
+          "Florida"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -377,13 +386,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039278",
+        "id": "nfl_college_00-0033662",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Tyler Harrell attend?",
-        "answer": "Miami",
+        "prompt": "What college did Cooper Rush attend?",
+        "answer": "Central Michigan",
         "accept": [
-          "Miami"
+          "Central Michigan"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -407,17 +416,19 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039918",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Caleb Williams attend?",
-        "answer": "Southern California",
-        "accept": [
-          "Southern California"
+        "id": "mlb_earnedRunAverage_2023",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in ERA (lowest) in 2023?",
+        "options": [
+          "Kyle Bradish",
+          "Blake Snell",
+          "Sonny Gray",
+          "Gerrit Cole"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
+        "answer": "Blake Snell",
+        "valid_as_of": "2023",
+        "source": "MLB Stats API"
       },
       {
         "id": "mlb_earnedRunAverage_2022",
@@ -435,18 +446,29 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0038941",
+        "id": "nfl_college_00-0033357",
         "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Tyler Scott drafted?",
-        "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
+        "type": "typed",
+        "prompt": "What college did Taysom Hill attend?",
+        "answer": "Brigham Young",
+        "accept": [
+          "Brigham Young"
         ],
-        "answer": "Round 5",
-        "valid_as_of": "2023",
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0039040",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did De'Von Achane attend?",
+        "answer": "Texas A&amp;M",
+        "accept": [
+          "Texas A&amp;M"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
@@ -465,43 +487,28 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039451",
+        "id": "nfl_college_00-0036261",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Isaiah Williams attend?",
-        "answer": "Illinois",
+        "prompt": "What college did Brandon Aiyuk attend?",
+        "answer": "Arizona State",
         "accept": [
-          "Illinois"
+          "Arizona State"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
-      },
-      {
-        "id": "mlb_earnedRunAverage_2023",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in ERA (lowest) in 2023?",
-        "options": [
-          "Kyle Bradish",
-          "Blake Snell",
-          "Sonny Gray",
-          "Gerrit Cole"
-        ],
-        "answer": "Blake Snell",
-        "valid_as_of": "2023",
-        "source": "MLB Stats API"
       }
     ],
     "2026-07-04": [
       {
-        "id": "nfl_college_00-0036939",
+        "id": "nfl_college_00-0033217",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Kawaan Baker attend?",
-        "answer": "South Alabama",
+        "prompt": "What college did Mo Alie-Cox attend?",
+        "answer": "Virginia Commonwealth",
         "accept": [
-          "South Alabama"
+          "Virginia Commonwealth"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -523,13 +530,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0034193",
+        "id": "nfl_college_00-0039916",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Kevin Rader attend?",
-        "answer": "Youngstown State",
+        "prompt": "What college did Ricky Pearsall attend?",
+        "answer": "Florida",
         "accept": [
-          "Youngstown State"
+          "Florida"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -581,49 +588,49 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0032977",
+        "id": "nfl_draft_00-0037012",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Rashard Higgins attend?",
-        "answer": "Colorado State",
-        "accept": [
-          "Colorado State"
+        "type": "multiple_choice",
+        "prompt": "In which round was Trey Lance drafted?",
+        "options": [
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 1",
+        "valid_as_of": "2021",
         "source": "nflverse"
       }
     ],
     "2026-07-05": [
       {
-        "id": "nfl_draft_00-0037077",
+        "id": "nfl_college_00-0031800",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Taylor Heinicke attend?",
+        "answer": "Old Dominion",
+        "accept": [
+          "Old Dominion"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_draft_00-0035535",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was Sam Howell drafted?",
+        "prompt": "In which round was Darius Slayton drafted?",
         "options": [
           "Round 4",
           "Round 5",
           "Round 6",
           "Round 7"
         ],
-        "answer": "Round 5",
-        "valid_as_of": "2022",
+        "answer": "Round 6",
+        "valid_as_of": "2019",
         "source": "nflverse"
-      },
-      {
-        "id": "mlb_strikeOuts_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in strikeouts in 2022?",
-        "options": [
-          "Corbin Burnes",
-          "Carlos Rod\u00f3n",
-          "Gerrit Cole",
-          "Aaron Nola"
-        ],
-        "answer": "Gerrit Cole",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
       },
       {
         "id": "mlb_wins_2022",
@@ -641,28 +648,43 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0034419",
-        "league": "NFL",
+        "id": "mlb_strikeOuts_2022",
+        "league": "MLB",
         "type": "multiple_choice",
-        "prompt": "In which round was Braxton Berrios drafted?",
+        "prompt": "Who led MLB in strikeouts in 2022?",
         "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
+          "Corbin Burnes",
+          "Carlos Rod\u00f3n",
+          "Gerrit Cole",
+          "Aaron Nola"
         ],
-        "answer": "Round 7",
-        "valid_as_of": "2018",
-        "source": "nflverse"
+        "answer": "Gerrit Cole",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0035250",
+        "id": "mlb_homeRuns_2021",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in home runs in 2021?",
+        "options": [
+          "Marcus Semien",
+          "Shohei Ohtani",
+          "Vladimir Guerrero Jr.",
+          "Salvador Perez"
+        ],
+        "answer": "Vladimir Guerrero Jr.",
+        "valid_as_of": "2021",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0030061",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Devin Singletary attend?",
-        "answer": "Florida Atlantic",
+        "prompt": "What college did Zach Ertz attend?",
+        "answer": "Stanford",
         "accept": [
-          "Florida Atlantic"
+          "Stanford"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -680,21 +702,6 @@
           "Julio Ur\u00edas"
         ],
         "answer": "Julio Ur\u00edas",
-        "valid_as_of": "2021",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "mlb_homeRuns_2021",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in home runs in 2021?",
-        "options": [
-          "Marcus Semien",
-          "Shohei Ohtani",
-          "Vladimir Guerrero Jr.",
-          "Salvador Perez"
-        ],
-        "answer": "Vladimir Guerrero Jr.",
         "valid_as_of": "2021",
         "source": "MLB Stats API"
       }
@@ -716,17 +723,17 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0036345",
+        "id": "nfl_draft_00-0036264",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was K.J. Osborn drafted?",
+        "prompt": "In which round was Jordan Love drafted?",
         "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "answer": "Round 6",
+        "answer": "Round 1",
         "valid_as_of": "2020",
         "source": "nflverse"
       },
@@ -776,26 +783,26 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0038994",
+        "id": "nfl_college_00-0039152",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jordan Addison attend?",
-        "answer": "Southern California",
+        "prompt": "What college did Will Levis attend?",
+        "answer": "Kentucky",
         "accept": [
-          "Southern California"
+          "Kentucky"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0039918",
+        "id": "nfl_college_00-0039075",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Caleb Williams attend?",
-        "answer": "Southern California",
+        "prompt": "What college did Puka Nacua attend?",
+        "answer": "Brigham Young",
         "accept": [
-          "Southern California"
+          "Brigham Young"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -804,13 +811,13 @@
     ],
     "2026-07-07": [
       {
-        "id": "nfl_college_00-0034829",
+        "id": "nfl_college_00-0035264",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Mike Gesicki attend?",
-        "answer": "Penn State",
+        "prompt": "What college did Jarrett Stidham attend?",
+        "answer": "Auburn",
         "accept": [
-          "Penn State"
+          "Auburn"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -862,18 +869,18 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0039146",
+        "id": "nfl_draft_00-0037809",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was Jayden Reed drafted?",
+        "prompt": "In which round was Chig Okonkwo drafted?",
         "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "answer": "Round 2",
-        "valid_as_of": "2023",
+        "answer": "Round 5",
+        "valid_as_of": "2022",
         "source": "nflverse"
       },
       {
@@ -892,13 +899,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039278",
+        "id": "nfl_college_00-0028118",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Tyler Harrell attend?",
-        "answer": "Miami",
+        "prompt": "What college did Tyrod Taylor attend?",
+        "answer": "Virginia Tech",
         "accept": [
-          "Miami"
+          "Virginia Tech"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -952,34 +959,6 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0034177",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Tim Boyle attend?",
-        "answer": "Eastern Kentucky",
-        "accept": [
-          "Eastern Kentucky"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0036906",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Khalil Herbert drafted?",
-        "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
-        ],
-        "answer": "Round 7",
-        "valid_as_of": "2021",
-        "source": "nflverse"
-      },
-      {
         "id": "mlb_stolenBases_2024",
         "league": "MLB",
         "type": "multiple_choice",
@@ -995,13 +974,39 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0036959",
+        "id": "nfl_college_00-0039074",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Michael Bandy attend?",
-        "answer": "San Diego",
+        "prompt": "What college did Davis Allen attend?",
+        "answer": "Clemson",
         "accept": [
-          "San Diego"
+          "Clemson"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0036963",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Amon-Ra St. Brown attend?",
+        "answer": "Southern California",
+        "accept": [
+          "Southern California"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0039917",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Michael Penix Jr. attend?",
+        "answer": "Washington",
+        "accept": [
+          "Washington"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1010,26 +1015,26 @@
     ],
     "2026-07-09": [
       {
-        "id": "nfl_college_00-0038805",
+        "id": "nfl_college_00-0026498",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Cephus Johnson III attend?",
-        "answer": "Southeastern Louisiana",
+        "prompt": "What college did Matthew Stafford attend?",
+        "answer": "Georgia",
         "accept": [
-          "Southeastern Louisiana"
+          "Georgia"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0030506",
+        "id": "nfl_college_00-0034753",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Travis Kelce attend?",
-        "answer": "Cincinnati",
+        "prompt": "What college did Mark Andrews attend?",
+        "answer": "Oklahoma",
         "accept": [
-          "Cincinnati"
+          "Oklahoma"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1066,13 +1071,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0031547",
+        "id": "nfl_college_00-0036212",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did DeVante Parker attend?",
-        "answer": "Louisville",
+        "prompt": "What college did Tua Tagovailoa attend?",
+        "answer": "Alabama",
         "accept": [
-          "Louisville"
+          "Alabama"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1111,30 +1116,32 @@
     ],
     "2026-07-10": [
       {
-        "id": "nfl_college_00-0035208",
+        "id": "nfl_college_00-0039893",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Olamide Zaccheaus attend?",
-        "answer": "Virginia",
+        "prompt": "What college did Brian Thomas Jr. attend?",
+        "answer": "Louisiana State",
         "accept": [
-          "Virginia"
+          "Louisiana State"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0039397",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Tejhaun Palmer attend?",
-        "answer": "Alabama-Birmingham",
-        "accept": [
-          "Alabama-Birmingham"
+        "id": "mlb_homeRuns_2022",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in home runs in 2022?",
+        "options": [
+          "Mike Trout",
+          "Kyle Schwarber",
+          "Pete Alonso",
+          "Aaron Judge"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
+        "answer": "Aaron Judge",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
       },
       {
         "id": "mlb_battingAverage_2023",
@@ -1150,6 +1157,36 @@
         "answer": "Luis Arraez",
         "valid_as_of": "2023",
         "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_draft_00-0039875",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Ray Davis drafted?",
+        "options": [
+          "Round 3",
+          "Round 4",
+          "Round 5",
+          "Round 6"
+        ],
+        "answer": "Round 4",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_draft_00-0032775",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Demarcus Robinson drafted?",
+        "options": [
+          "Round 3",
+          "Round 4",
+          "Round 5",
+          "Round 6"
+        ],
+        "answer": "Round 4",
+        "valid_as_of": "2016",
+        "source": "nflverse"
       },
       {
         "id": "mlb_runsBattedIn_2024",
@@ -1180,47 +1217,45 @@
         "answer": "Robbie Ray",
         "valid_as_of": "2021",
         "source": "MLB Stats API"
-      },
-      {
-        "id": "mlb_homeRuns_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in home runs in 2022?",
-        "options": [
-          "Mike Trout",
-          "Kyle Schwarber",
-          "Pete Alonso",
-          "Aaron Judge"
-        ],
-        "answer": "Aaron Judge",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_draft_00-0030506",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Travis Kelce drafted?",
-        "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
-        ],
-        "answer": "Round 2",
-        "valid_as_of": "2013",
-        "source": "nflverse"
       }
     ],
     "2026-07-11": [
       {
-        "id": "nfl_college_00-0039325",
+        "id": "mlb_strikeOuts_2022",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in strikeouts in 2022?",
+        "options": [
+          "Corbin Burnes",
+          "Carlos Rod\u00f3n",
+          "Gerrit Cole",
+          "Aaron Nola"
+        ],
+        "answer": "Gerrit Cole",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0026158",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Carson Steele attend?",
-        "answer": "UCLA",
+        "prompt": "What college did Joe Flacco attend?",
+        "answer": "Delaware",
         "accept": [
-          "UCLA"
+          "Delaware"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0033908",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Cooper Kupp attend?",
+        "answer": "Eastern Washington",
+        "accept": [
+          "Eastern Washington"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1257,6 +1292,19 @@
         "source": "MLB Stats API"
       },
       {
+        "id": "nfl_college_00-0036945",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Justin Fields attend?",
+        "answer": "Ohio State",
+        "accept": [
+          "Ohio State"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
         "id": "mlb_earnedRunAverage_2021",
         "league": "MLB",
         "type": "multiple_choice",
@@ -1270,27 +1318,27 @@
         "answer": "Corbin Burnes",
         "valid_as_of": "2021",
         "source": "MLB Stats API"
-      },
+      }
+    ],
+    "2026-07-12": [
       {
-        "id": "mlb_strikeOuts_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in strikeouts in 2022?",
-        "options": [
-          "Corbin Burnes",
-          "Carlos Rod\u00f3n",
-          "Gerrit Cole",
-          "Aaron Nola"
+        "id": "nfl_college_00-0039363",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Isaac Guerendo attend?",
+        "answer": "Louisville",
+        "accept": [
+          "Louisville"
         ],
-        "answer": "Gerrit Cole",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
       },
       {
-        "id": "nfl_draft_00-0030564",
+        "id": "nfl_draft_00-0038543",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was DeAndre Hopkins drafted?",
+        "prompt": "In which round was Jaxon Smith-Njigba drafted?",
         "options": [
           "Round 1",
           "Round 2",
@@ -1298,49 +1346,6 @@
           "Round 4"
         ],
         "answer": "Round 1",
-        "valid_as_of": "2013",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_college_00-0039336",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Jaaron Hayek attend?",
-        "answer": "Villanova",
-        "accept": [
-          "Villanova"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      }
-    ],
-    "2026-07-12": [
-      {
-        "id": "nfl_college_00-0030061",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Zach Ertz attend?",
-        "answer": "Stanford",
-        "accept": [
-          "Stanford"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0039146",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Jayden Reed drafted?",
-        "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
-        ],
-        "answer": "Round 2",
         "valid_as_of": "2023",
         "source": "nflverse"
       },
@@ -1405,13 +1410,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039522",
+        "id": "nfl_college_00-0037263",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Corey Crooms attend?",
-        "answer": "Minnesota",
+        "prompt": "What college did Tyler Allgeier attend?",
+        "answer": "Brigham Young",
         "accept": [
-          "Minnesota"
+          "Brigham Young"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1419,6 +1424,49 @@
       }
     ],
     "2026-07-13": [
+      {
+        "id": "mlb_hits_2024",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in hits in 2024?",
+        "options": [
+          "Bobby Witt Jr.",
+          "Vladimir Guerrero Jr.",
+          "Luis Arraez",
+          "Shohei Ohtani"
+        ],
+        "answer": "Bobby Witt Jr.",
+        "valid_as_of": "2024",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0034383",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Dalton Schultz attend?",
+        "answer": "Stanford",
+        "accept": [
+          "Stanford"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_draft_00-0031236",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Brandin Cooks drafted?",
+        "options": [
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
+        ],
+        "answer": "Round 1",
+        "valid_as_of": "2014",
+        "source": "nflverse"
+      },
       {
         "id": "mlb_hits_2021",
         "league": "MLB",
@@ -1450,18 +1498,16 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0036652",
+        "id": "nfl_college_00-0037120",
         "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Racey McMath drafted?",
-        "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
+        "type": "typed",
+        "prompt": "What college did Tyler Goodson attend?",
+        "answer": "Iowa",
+        "accept": [
+          "Iowa"
         ],
-        "answer": "Round 7",
-        "valid_as_of": "2021",
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
@@ -1478,47 +1524,6 @@
         "answer": "Chris Sale",
         "valid_as_of": "2024",
         "source": "MLB Stats API"
-      },
-      {
-        "id": "mlb_hits_2024",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in hits in 2024?",
-        "options": [
-          "Bobby Witt Jr.",
-          "Vladimir Guerrero Jr.",
-          "Luis Arraez",
-          "Shohei Ohtani"
-        ],
-        "answer": "Bobby Witt Jr.",
-        "valid_as_of": "2024",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_college_00-0039557",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Lorenzo Lingard attend?",
-        "answer": "Akron",
-        "accept": [
-          "Akron"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_college_00-0034177",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Tim Boyle attend?",
-        "answer": "Eastern Kentucky",
-        "accept": [
-          "Eastern Kentucky"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
       }
     ],
     "2026-07-14": [
@@ -1538,26 +1543,26 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0035250",
+        "id": "nfl_college_00-0039384",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Devin Singletary attend?",
-        "answer": "Florida Atlantic",
+        "prompt": "What college did Tyrone Tracy Jr. attend?",
+        "answer": "Purdue",
         "accept": [
-          "Florida Atlantic"
+          "Purdue"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0034791",
+        "id": "nfl_college_00-0036590",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Nick Chubb attend?",
-        "answer": "Georgia",
+        "prompt": "What college did Quintin Morris attend?",
+        "answer": "Bowling Green",
         "accept": [
-          "Georgia"
+          "Bowling Green"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1594,13 +1599,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0034775",
+        "id": "nfl_college_00-0034771",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Christian Kirk attend?",
-        "answer": "Texas A&amp;M",
+        "prompt": "What college did Mason Rudolph attend?",
+        "answer": "Oklahoma State",
         "accept": [
-          "Texas A&amp;M"
+          "Oklahoma State"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1639,13 +1644,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0038117",
+        "id": "nfl_college_00-0034348",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Wan'Dale Robinson attend?",
-        "answer": "Kentucky",
+        "prompt": "What college did Courtland Sutton attend?",
+        "answer": "Southern Methodist",
         "accept": [
-          "Kentucky"
+          "Southern Methodist"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1667,15 +1672,17 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039737",
+        "id": "nfl_draft_00-0039915",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Tip Reiman attend?",
-        "answer": "Illinois",
-        "accept": [
-          "Illinois"
+        "type": "multiple_choice",
+        "prompt": "In which round was Ladd McConkey drafted?",
+        "options": [
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
+        "answer": "Round 2",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
@@ -1710,49 +1717,51 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0036627",
+        "id": "nfl_draft_00-0036972",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was Dez Fitzpatrick drafted?",
+        "prompt": "In which round was Mac Jones drafted?",
         "options": [
+          "Round 1",
+          "Round 2",
           "Round 3",
-          "Round 4",
-          "Round 5",
-          "Round 6"
+          "Round 4"
         ],
-        "answer": "Round 4",
+        "answer": "Round 1",
         "valid_as_of": "2021",
         "source": "nflverse"
       }
     ],
     "2026-07-16": [
       {
-        "id": "nfl_college_00-0033526",
+        "id": "nfl_draft_00-0036259",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Samaje Perine attend?",
-        "answer": "Oklahoma",
-        "accept": [
-          "Oklahoma"
+        "type": "multiple_choice",
+        "prompt": "In which round was Jauan Jennings drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 7",
+        "valid_as_of": "2020",
         "source": "nflverse"
       },
       {
-        "id": "mlb_strikeOuts_2021",
-        "league": "MLB",
+        "id": "nfl_draft_00-0031345",
+        "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "Who led MLB in strikeouts in 2021?",
+        "prompt": "In which round was Jimmy Garoppolo drafted?",
         "options": [
-          "Max Scherzer",
-          "Zack Wheeler",
-          "Robbie Ray",
-          "Gerrit Cole"
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "answer": "Robbie Ray",
-        "valid_as_of": "2021",
-        "source": "MLB Stats API"
+        "answer": "Round 2",
+        "valid_as_of": "2014",
+        "source": "nflverse"
       },
       {
         "id": "mlb_earnedRunAverage_2023",
@@ -1767,6 +1776,21 @@
         ],
         "answer": "Blake Snell",
         "valid_as_of": "2023",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_strikeOuts_2021",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in strikeouts in 2021?",
+        "options": [
+          "Max Scherzer",
+          "Zack Wheeler",
+          "Robbie Ray",
+          "Gerrit Cole"
+        ],
+        "answer": "Robbie Ray",
+        "valid_as_of": "2021",
         "source": "MLB Stats API"
       },
       {
@@ -1785,34 +1809,6 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039923",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did J.J. McCarthy attend?",
-        "answer": "Michigan",
-        "accept": [
-          "Michigan"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0036984",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Trey Sermon drafted?",
-        "options": [
-          "Round 2",
-          "Round 3",
-          "Round 4",
-          "Round 5"
-        ],
-        "answer": "Round 3",
-        "valid_as_of": "2021",
-        "source": "nflverse"
-      },
-      {
         "id": "mlb_earnedRunAverage_2022",
         "league": "MLB",
         "type": "multiple_choice",
@@ -1826,17 +1822,30 @@
         "answer": "Justin Verlander",
         "valid_as_of": "2022",
         "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0039851",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Drake Maye attend?",
+        "answer": "North Carolina",
+        "accept": [
+          "North Carolina"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
       }
     ],
     "2026-07-17": [
       {
-        "id": "nfl_college_00-0028118",
+        "id": "nfl_college_00-0039919",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Tyrod Taylor attend?",
-        "answer": "Virginia Tech",
+        "prompt": "What college did Rome Odunze attend?",
+        "answer": "Washington",
         "accept": [
-          "Virginia Tech"
+          "Washington"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1858,28 +1867,28 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0039751",
+        "id": "nfl_draft_00-0031544",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was Jordan Whittington drafted?",
+        "prompt": "In which round was Amari Cooper drafted?",
         "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "answer": "Round 7",
-        "valid_as_of": "2024",
+        "answer": "Round 1",
+        "valid_as_of": "2015",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0037805",
+        "id": "nfl_college_00-0038951",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jeremy Ruckert attend?",
-        "answer": "Ohio State",
+        "prompt": "What college did Sean Tucker attend?",
+        "answer": "Syracuse",
         "accept": [
-          "Ohio State"
+          "Syracuse"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -1933,31 +1942,31 @@
     ],
     "2026-07-18": [
       {
-        "id": "nfl_college_00-0034395",
+        "id": "mlb_hits_2022",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in hits in 2022?",
+        "options": [
+          "Freddie Freeman",
+          "Trea Turner",
+          "Bo Bichette",
+          "Jos\u00e9 Abreu"
+        ],
+        "answer": "Freddie Freeman",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0034960",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Daurice Fountain attend?",
-        "answer": "Northern Iowa",
+        "prompt": "What college did Jakobi Meyers attend?",
+        "answer": "North Carolina State",
         "accept": [
-          "Northern Iowa"
+          "North Carolina State"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0036984",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Trey Sermon drafted?",
-        "options": [
-          "Round 2",
-          "Round 3",
-          "Round 4",
-          "Round 5"
-        ],
-        "answer": "Round 3",
-        "valid_as_of": "2021",
         "source": "nflverse"
       },
       {
@@ -1976,13 +1985,26 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039065",
+        "id": "nfl_college_00-0036212",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Sam LaPorta attend?",
-        "answer": "Iowa",
+        "prompt": "What college did Tua Tagovailoa attend?",
+        "answer": "Alabama",
         "accept": [
-          "Iowa"
+          "Alabama"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0039064",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Zay Flowers attend?",
+        "answer": "Boston College",
+        "accept": [
+          "Boston College"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -2017,61 +2039,48 @@
         "answer": "Jon Berti",
         "valid_as_of": "2022",
         "source": "MLB Stats API"
-      },
-      {
-        "id": "mlb_hits_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in hits in 2022?",
-        "options": [
-          "Freddie Freeman",
-          "Trea Turner",
-          "Bo Bichette",
-          "Jos\u00e9 Abreu"
-        ],
-        "answer": "Freddie Freeman",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
       }
     ],
     "2026-07-19": [
       {
-        "id": "nfl_college_00-0038821",
+        "id": "nfl_college_00-0033949",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Rakim Jarrett attend?",
-        "answer": "Maryland",
+        "prompt": "What college did Joshua Dobbs attend?",
+        "answer": "Tennessee",
         "accept": [
-          "Maryland"
+          "Tennessee"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0034860",
+        "id": "nfl_college_00-0038041",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Dante Pettis attend?",
-        "answer": "Washington",
+        "prompt": "What college did Jake Ferguson attend?",
+        "answer": "Wisconsin",
         "accept": [
-          "Washington"
+          "Wisconsin"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0039847",
+        "id": "nfl_draft_00-0036637",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Theo Johnson attend?",
-        "answer": "Penn State",
-        "accept": [
-          "Penn State"
+        "type": "multiple_choice",
+        "prompt": "In which round was Noah Gray drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 6",
+        "valid_as_of": "2021",
         "source": "nflverse"
       },
       {
@@ -2137,31 +2146,31 @@
     ],
     "2026-07-20": [
       {
-        "id": "nfl_college_00-0035208",
+        "id": "mlb_stolenBases_2022",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in stolen bases in 2022?",
+        "options": [
+          "Jorge Mateo",
+          "Randy Arozarena",
+          "Cedric Mullins",
+          "Jon Berti"
+        ],
+        "answer": "Jon Berti",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0034365",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Olamide Zaccheaus attend?",
-        "answer": "Virginia",
+        "prompt": "What college did Ian Thomas attend?",
+        "answer": "Indiana",
         "accept": [
-          "Virginia"
+          "Indiana"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0033009",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Tyler Boyd drafted?",
-        "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
-        ],
-        "answer": "Round 2",
-        "valid_as_of": "2016",
         "source": "nflverse"
       },
       {
@@ -2180,34 +2189,32 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "mlb_earnedRunAverage_2022",
-        "league": "MLB",
+        "id": "nfl_draft_00-0031345",
+        "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "Who led MLB in ERA (lowest) in 2022?",
+        "prompt": "In which round was Jimmy Garoppolo drafted?",
         "options": [
-          "Alek Manoah",
-          "Justin Verlander",
-          "Julio Ur\u00edas",
-          "Dylan Cease"
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "answer": "Justin Verlander",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
+        "answer": "Round 2",
+        "valid_as_of": "2014",
+        "source": "nflverse"
       },
       {
-        "id": "mlb_stolenBases_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in stolen bases in 2022?",
-        "options": [
-          "Jorge Mateo",
-          "Randy Arozarena",
-          "Cedric Mullins",
-          "Jon Berti"
+        "id": "nfl_college_00-0033589",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did David Moore attend?",
+        "answer": "East Central",
+        "accept": [
+          "East Central"
         ],
-        "answer": "Jon Berti",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
       },
       {
         "id": "mlb_stolenBases_2023",
@@ -2225,19 +2232,19 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0033858",
-        "league": "NFL",
+        "id": "mlb_earnedRunAverage_2022",
+        "league": "MLB",
         "type": "multiple_choice",
-        "prompt": "In which round was Jonnu Smith drafted?",
+        "prompt": "Who led MLB in ERA (lowest) in 2022?",
         "options": [
-          "Round 3",
-          "Round 4",
-          "Round 5",
-          "Round 6"
+          "Alek Manoah",
+          "Justin Verlander",
+          "Julio Ur\u00edas",
+          "Dylan Cease"
         ],
-        "answer": "Round 4",
-        "valid_as_of": "2017",
-        "source": "nflverse"
+        "answer": "Justin Verlander",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
       }
     ],
     "2026-07-21": [
@@ -2287,16 +2294,18 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0035208",
+        "id": "nfl_draft_00-0031345",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Olamide Zaccheaus attend?",
-        "answer": "Virginia",
-        "accept": [
-          "Virginia"
+        "type": "multiple_choice",
+        "prompt": "In which round was Jimmy Garoppolo drafted?",
+        "options": [
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 2",
+        "valid_as_of": "2014",
         "source": "nflverse"
       },
       {
@@ -2315,26 +2324,28 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039847",
+        "id": "nfl_draft_00-0036637",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Theo Johnson attend?",
-        "answer": "Penn State",
-        "accept": [
-          "Penn State"
+        "type": "multiple_choice",
+        "prompt": "In which round was Noah Gray drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 6",
+        "valid_as_of": "2021",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0036423",
+        "id": "nfl_college_00-0038555",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Albert Okwuegbunam attend?",
-        "answer": "Missouri",
+        "prompt": "What college did Tank Bigsby attend?",
+        "answer": "Auburn",
         "accept": [
-          "Missouri"
+          "Auburn"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -2358,13 +2369,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0037267",
+        "id": "nfl_college_00-0035216",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jerome Ford attend?",
-        "answer": "Cincinnati",
+        "prompt": "What college did Diontae Johnson attend?",
+        "answer": "Toledo",
         "accept": [
-          "Cincinnati"
+          "Toledo"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -2401,13 +2412,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0038821",
+        "id": "nfl_college_00-0033949",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Rakim Jarrett attend?",
-        "answer": "Maryland",
+        "prompt": "What college did Joshua Dobbs attend?",
+        "answer": "Tennessee",
         "accept": [
-          "Maryland"
+          "Tennessee"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -2429,95 +2440,22 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0038621",
+        "id": "nfl_draft_00-0036410",
         "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "In which round was Demario Douglas drafted?",
-        "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
-        ],
-        "answer": "Round 7",
-        "valid_as_of": "2023",
-        "source": "nflverse"
-      }
-    ],
-    "2026-07-23": [
-      {
-        "id": "mlb_runsBattedIn_2024",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in RBIs in 2024?",
-        "options": [
-          "Shohei Ohtani",
-          "Aaron Judge",
-          "Jos\u00e9 Ram\u00edrez",
-          "Willy Adames"
-        ],
-        "answer": "Aaron Judge",
-        "valid_as_of": "2024",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_college_00-0038393",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Dontayvion Wicks attend?",
-        "answer": "Virginia",
-        "accept": [
-          "Virginia"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_draft_00-0030564",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was DeAndre Hopkins drafted?",
+        "prompt": "In which round was Tee Higgins drafted?",
         "options": [
           "Round 1",
           "Round 2",
           "Round 3",
           "Round 4"
         ],
-        "answer": "Round 1",
-        "valid_as_of": "2013",
+        "answer": "Round 2",
+        "valid_as_of": "2020",
         "source": "nflverse"
-      },
-      {
-        "id": "mlb_hits_2023",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in hits in 2023?",
-        "options": [
-          "Luis Arraez",
-          "Ronald Acu\u00f1a Jr.",
-          "Marcus Semien",
-          "Freddie Freeman"
-        ],
-        "answer": "Ronald Acu\u00f1a Jr.",
-        "valid_as_of": "2023",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_draft_00-0038941",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Tyler Scott drafted?",
-        "options": [
-          "Round 4",
-          "Round 5",
-          "Round 6",
-          "Round 7"
-        ],
-        "answer": "Round 5",
-        "valid_as_of": "2023",
-        "source": "nflverse"
-      },
+      }
+    ],
+    "2026-07-23": [
       {
         "id": "mlb_hits_2024",
         "league": "MLB",
@@ -2547,33 +2485,108 @@
         "answer": "Chris Sale",
         "valid_as_of": "2024",
         "source": "MLB Stats API"
-      }
-    ],
-    "2026-07-24": [
+      },
       {
-        "id": "nfl_college_00-0033923",
+        "id": "nfl_college_00-0036590",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Kareem Hunt attend?",
-        "answer": "Toledo",
+        "prompt": "What college did Quintin Morris attend?",
+        "answer": "Bowling Green",
         "accept": [
-          "Toledo"
+          "Bowling Green"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0039923",
+        "id": "mlb_runsBattedIn_2024",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in RBIs in 2024?",
+        "options": [
+          "Shohei Ohtani",
+          "Aaron Judge",
+          "Jos\u00e9 Ram\u00edrez",
+          "Willy Adames"
+        ],
+        "answer": "Aaron Judge",
+        "valid_as_of": "2024",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_hits_2023",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in hits in 2023?",
+        "options": [
+          "Luis Arraez",
+          "Ronald Acu\u00f1a Jr.",
+          "Marcus Semien",
+          "Freddie Freeman"
+        ],
+        "answer": "Ronald Acu\u00f1a Jr.",
+        "valid_as_of": "2023",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_draft_00-0035249",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Josh Oliver drafted?",
+        "options": [
+          "Round 2",
+          "Round 3",
+          "Round 4",
+          "Round 5"
+        ],
+        "answer": "Round 3",
+        "valid_as_of": "2019",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_college_00-0039373",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did J.J. McCarthy attend?",
-        "answer": "Michigan",
+        "prompt": "What college did Audric Estim\u00e9 attend?",
+        "answer": "Notre Dame",
         "accept": [
-          "Michigan"
+          "Notre Dame"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
+        "source": "nflverse"
+      }
+    ],
+    "2026-07-24": [
+      {
+        "id": "nfl_draft_00-0034270",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Tyler Conklin drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
+        ],
+        "answer": "Round 5",
+        "valid_as_of": "2018",
+        "source": "nflverse"
+      },
+      {
+        "id": "nfl_draft_00-0036259",
+        "league": "NFL",
+        "type": "multiple_choice",
+        "prompt": "In which round was Jauan Jennings drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
+        ],
+        "answer": "Round 7",
+        "valid_as_of": "2020",
         "source": "nflverse"
       },
       {
@@ -2622,13 +2635,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0034364",
+        "id": "nfl_college_00-0039376",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jordan Akins attend?",
-        "answer": "Central Florida",
+        "prompt": "What college did Spencer Rattler attend?",
+        "answer": "South Carolina",
         "accept": [
-          "Central Florida"
+          "South Carolina"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -2652,6 +2665,19 @@
     ],
     "2026-07-25": [
       {
+        "id": "nfl_college_00-0037239",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Chris Olave attend?",
+        "answer": "Ohio State",
+        "accept": [
+          "Ohio State"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
         "id": "mlb_strikeOuts_2023",
         "league": "MLB",
         "type": "multiple_choice",
@@ -2663,6 +2689,21 @@
           "Pablo L\u00f3pez"
         ],
         "answer": "Spencer Strider",
+        "valid_as_of": "2023",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_runsBattedIn_2023",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in RBIs in 2023?",
+        "options": [
+          "Pete Alonso",
+          "Matt Olson",
+          "Ozzie Albies",
+          "Kyle Tucker"
+        ],
+        "answer": "Matt Olson",
         "valid_as_of": "2023",
         "source": "MLB Stats API"
       },
@@ -2682,31 +2723,29 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0036265",
+        "id": "nfl_college_00-0033873",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did AJ Dillon attend?",
-        "answer": "Boston College",
+        "prompt": "What college did Patrick Mahomes attend?",
+        "answer": "Texas Tech",
         "accept": [
-          "Boston College"
+          "Texas Tech"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_draft_00-0030564",
+        "id": "nfl_college_00-0037012",
         "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was DeAndre Hopkins drafted?",
-        "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
+        "type": "typed",
+        "prompt": "What college did Trey Lance attend?",
+        "answer": "North Dakota State",
+        "accept": [
+          "North Dakota State"
         ],
-        "answer": "Round 1",
-        "valid_as_of": "2013",
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
@@ -2723,37 +2762,37 @@
         "answer": "Kyle Wright",
         "valid_as_of": "2022",
         "source": "MLB Stats API"
-      },
+      }
+    ],
+    "2026-07-26": [
       {
-        "id": "mlb_runsBattedIn_2023",
-        "league": "MLB",
+        "id": "nfl_draft_00-0036997",
+        "league": "NFL",
         "type": "multiple_choice",
-        "prompt": "Who led MLB in RBIs in 2023?",
+        "prompt": "In which round was Javonte Williams drafted?",
         "options": [
-          "Pete Alonso",
-          "Matt Olson",
-          "Ozzie Albies",
-          "Kyle Tucker"
+          "Round 1",
+          "Round 2",
+          "Round 3",
+          "Round 4"
         ],
-        "answer": "Matt Olson",
-        "valid_as_of": "2023",
-        "source": "MLB Stats API"
+        "answer": "Round 2",
+        "valid_as_of": "2021",
+        "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0033949",
+        "id": "nfl_college_00-0035631",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Joshua Dobbs attend?",
-        "answer": "Tennessee",
+        "prompt": "What college did Drew Sample attend?",
+        "answer": "Washington",
         "accept": [
-          "Tennessee"
+          "Washington"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
-      }
-    ],
-    "2026-07-26": [
+      },
       {
         "id": "mlb_wins_2024",
         "league": "MLB",
@@ -2767,49 +2806,6 @@
         ],
         "answer": "Chris Sale",
         "valid_as_of": "2024",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_draft_00-0036984",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Trey Sermon drafted?",
-        "options": [
-          "Round 2",
-          "Round 3",
-          "Round 4",
-          "Round 5"
-        ],
-        "answer": "Round 3",
-        "valid_as_of": "2021",
-        "source": "nflverse"
-      },
-      {
-        "id": "nfl_college_00-0039796",
-        "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Rasheen Ali attend?",
-        "answer": "Marshall",
-        "accept": [
-          "Marshall"
-        ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
-        "source": "nflverse"
-      },
-      {
-        "id": "mlb_earnedRunAverage_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in ERA (lowest) in 2022?",
-        "options": [
-          "Alek Manoah",
-          "Justin Verlander",
-          "Julio Ur\u00edas",
-          "Dylan Cease"
-        ],
-        "answer": "Justin Verlander",
-        "valid_as_of": "2022",
         "source": "MLB Stats API"
       },
       {
@@ -2843,18 +2839,31 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_draft_00-0035719",
-        "league": "NFL",
+        "id": "mlb_earnedRunAverage_2022",
+        "league": "MLB",
         "type": "multiple_choice",
-        "prompt": "In which round was Deebo Samuel Sr. drafted?",
+        "prompt": "Who led MLB in ERA (lowest) in 2022?",
         "options": [
-          "Round 1",
-          "Round 2",
-          "Round 3",
-          "Round 4"
+          "Alek Manoah",
+          "Justin Verlander",
+          "Julio Ur\u00edas",
+          "Dylan Cease"
         ],
-        "answer": "Round 2",
-        "valid_as_of": "2019",
+        "answer": "Justin Verlander",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0034981",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Foster Moreau attend?",
+        "answer": "Louisiana State",
+        "accept": [
+          "Louisiana State"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
         "source": "nflverse"
       }
     ],
@@ -2890,29 +2899,31 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0036674",
+        "id": "nfl_college_00-0036637",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Josh Pederson attend?",
-        "answer": "Louisiana-Monroe",
+        "prompt": "What college did Noah Gray attend?",
+        "answer": "Duke",
         "accept": [
-          "Louisiana-Monroe"
+          "Duke"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0036251",
+        "id": "nfl_draft_00-0036328",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Zack Moss attend?",
-        "answer": "Utah",
-        "accept": [
-          "Utah"
+        "type": "multiple_choice",
+        "prompt": "In which round was Antonio Gibson drafted?",
+        "options": [
+          "Round 2",
+          "Round 3",
+          "Round 4",
+          "Round 5"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 3",
+        "valid_as_of": "2020",
         "source": "nflverse"
       },
       {
@@ -2931,16 +2942,18 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0034959",
+        "id": "nfl_draft_00-0039075",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Andrew Beck attend?",
-        "answer": "Texas",
-        "accept": [
-          "Texas"
+        "type": "multiple_choice",
+        "prompt": "In which round was Puka Nacua drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 6",
+        "valid_as_of": "2023",
         "source": "nflverse"
       },
       {
@@ -2961,36 +2974,6 @@
     ],
     "2026-07-28": [
       {
-        "id": "mlb_earnedRunAverage_2022",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in ERA (lowest) in 2022?",
-        "options": [
-          "Alek Manoah",
-          "Justin Verlander",
-          "Julio Ur\u00edas",
-          "Dylan Cease"
-        ],
-        "answer": "Justin Verlander",
-        "valid_as_of": "2022",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_draft_00-0034364",
-        "league": "NFL",
-        "type": "multiple_choice",
-        "prompt": "In which round was Jordan Akins drafted?",
-        "options": [
-          "Round 3",
-          "Round 4",
-          "Round 5",
-          "Round 6"
-        ],
-        "answer": "Round 4",
-        "valid_as_of": "2018",
-        "source": "nflverse"
-      },
-      {
         "id": "mlb_earnedRunAverage_2023",
         "league": "MLB",
         "type": "multiple_choice",
@@ -3006,28 +2989,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "mlb_wins_2021",
-        "league": "MLB",
-        "type": "multiple_choice",
-        "prompt": "Who led MLB in wins in 2021?",
-        "options": [
-          "Adam Wainwright",
-          "Walker Buehler",
-          "Gerrit Cole",
-          "Julio Ur\u00edas"
-        ],
-        "answer": "Julio Ur\u00edas",
-        "valid_as_of": "2021",
-        "source": "MLB Stats API"
-      },
-      {
-        "id": "nfl_college_00-0034775",
+        "id": "nfl_college_00-0033906",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Christian Kirk attend?",
-        "answer": "Texas A&amp;M",
+        "prompt": "What college did Alvin Kamara attend?",
+        "answer": "Tennessee",
         "accept": [
-          "Texas A&amp;M"
+          "Tennessee"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -3049,13 +3017,56 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0033119",
+        "id": "nfl_college_00-0036264",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Jacoby Brissett attend?",
-        "answer": "North Carolina State",
+        "prompt": "What college did Jordan Love attend?",
+        "answer": "Utah State",
         "accept": [
-          "North Carolina State"
+          "Utah State"
+        ],
+        "autocomplete_pool_ref": "nfl_colleges",
+        "valid_as_of": "2024",
+        "source": "nflverse"
+      },
+      {
+        "id": "mlb_earnedRunAverage_2022",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in ERA (lowest) in 2022?",
+        "options": [
+          "Alek Manoah",
+          "Justin Verlander",
+          "Julio Ur\u00edas",
+          "Dylan Cease"
+        ],
+        "answer": "Justin Verlander",
+        "valid_as_of": "2022",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "mlb_wins_2021",
+        "league": "MLB",
+        "type": "multiple_choice",
+        "prompt": "Who led MLB in wins in 2021?",
+        "options": [
+          "Adam Wainwright",
+          "Walker Buehler",
+          "Gerrit Cole",
+          "Julio Ur\u00edas"
+        ],
+        "answer": "Julio Ur\u00edas",
+        "valid_as_of": "2021",
+        "source": "MLB Stats API"
+      },
+      {
+        "id": "nfl_college_00-0034613",
+        "league": "NFL",
+        "type": "typed",
+        "prompt": "What college did Tanner Hudson attend?",
+        "answer": "Southern Arkansas",
+        "accept": [
+          "Southern Arkansas"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
@@ -3079,29 +3090,31 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039522",
+        "id": "nfl_college_00-0039874",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Corey Crooms attend?",
-        "answer": "Minnesota",
+        "prompt": "What college did Jaylen Wright attend?",
+        "answer": "Tennessee",
         "accept": [
-          "Minnesota"
+          "Tennessee"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
         "source": "nflverse"
       },
       {
-        "id": "nfl_college_00-0033923",
+        "id": "nfl_draft_00-0034270",
         "league": "NFL",
-        "type": "typed",
-        "prompt": "What college did Kareem Hunt attend?",
-        "answer": "Toledo",
-        "accept": [
-          "Toledo"
+        "type": "multiple_choice",
+        "prompt": "In which round was Tyler Conklin drafted?",
+        "options": [
+          "Round 4",
+          "Round 5",
+          "Round 6",
+          "Round 7"
         ],
-        "autocomplete_pool_ref": "nfl_colleges",
-        "valid_as_of": "2024",
+        "answer": "Round 5",
+        "valid_as_of": "2018",
         "source": "nflverse"
       },
       {
@@ -3135,13 +3148,13 @@
         "source": "MLB Stats API"
       },
       {
-        "id": "nfl_college_00-0039255",
+        "id": "nfl_college_00-0036971",
         "league": "NFL",
         "type": "typed",
-        "prompt": "What college did Tayvion Robinson attend?",
-        "answer": "Kentucky",
+        "prompt": "What college did Trevor Lawrence attend?",
+        "answer": "Clemson",
         "accept": [
-          "Kentucky"
+          "Clemson"
         ],
         "autocomplete_pool_ref": "nfl_colleges",
         "valid_as_of": "2024",
