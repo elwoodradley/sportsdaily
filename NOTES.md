@@ -5,7 +5,46 @@
 
 ---
 
-## ⏭️ RESUME HERE — finish the App Store launch (written 2026-06-30 night)
+## ✅ SUBMITTED TO APP STORE — 2026-07-01 (from the XPS/Linux box)
+
+**iOS app is "Waiting for Review"** on App Store Connect. Everything below the
+old "RESUME HERE" note got done today. Recap of the day + what's still open:
+
+**Done today:**
+- `eas build --platform ios --profile production` → signed `.ipa` (v1.0.0 build 2).
+  Fixed a blocker: `expo-splash-screen` wasn't installed → `expo config` failed;
+  `npm install` synced it. EAS also auto-added `expo-updates` (OTA) + the
+  encryption flag (`ITSAppUsesNonExemptEncryption:false`) to `app.json`.
+- Upgraded to **EAS Starter ($19/mo)** to skip the badly-backed-up free submit
+  queue — the free queue sat >1hr. Can cancel after launch.
+- `eas submit` → uploaded to App Store Connect (app record auto-created as
+  "Daily Drop (28ac70)"; renamed in listing to **"Daily Drop: Sports Trivia"**).
+- **Privacy policy** live at https://stonetoad.org/sportsdaily/privacy-policy.html
+  (GitHub Pages from `/docs`, custom domain stonetoad.org). Used for Privacy +
+  Support URL. Source: `docs/privacy-policy.html`.
+- **Marketing screenshots** built with ImageMagick (branded navy/Oswald frames)
+  in `marketing/` — 6.9" (`out/`) + 6.5" (`out_6.5/`). ASC's box wanted the 6.5"
+  set (1284x2778). Listing copy saved in `marketing/store-listing.txt`.
+- Full listing filled (desc/keywords/subtitle/category Games>Trivia/age 4+/
+  App Privacy = Data Not Collected). Real-device QA via TestFlight = solid.
+
+**OPEN / TODO (post-submit):**
+- **If Manual release was chosen:** must click Release in ASC after approval.
+- **Seller name shows "Lucas Wood5586815481"** — Apple appends digits to
+  non-unique individual names, and it's public. Can't self-edit. Options:
+  (a) request Apple Dev Support remove the suffix (free, low odds), or
+  (b) convert to an **Organization** account = "Stone Toad" but needs a legal
+  entity (LLC) + D-U-N-S — user declined the LLC for now. Living with it for v1.
+- **BUG: HTML entity not decoded** — typed-answer autocomplete shows
+  "Texas A&amp;M" instead of "Texas A&M" (any school with `&`). Affects display
+  and possibly answer-matching. Fix in generator/app, push via **EAS Update**
+  (OTA, no re-review). Not a launch blocker.
+- **Content cliff** still stands: sets run 2026-06-30 → 2027-06-29, then replay.
+- Review ETA ~24-48h; watch email. First-time rejection = paste reason, fix, resubmit.
+
+---
+
+## ⏭️ (DONE) RESUME HERE — finish the App Store launch (written 2026-06-30 night)
 
 **Picking up 2026-07-01 at work on the Dell XPS** (NOT the M4 Mac mini this was
 built on). Read the machine note below — it changes what you can/can't do.

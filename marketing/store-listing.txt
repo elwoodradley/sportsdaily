@@ -1,0 +1,87 @@
+================================================================
+DAILY DROP - APP STORE LISTING COPY
+Copy each section below into the matching App Store Connect field.
+================================================================
+
+
+----------------------------------------------------------------
+APP NAME (max 30 chars)
+----------------------------------------------------------------
+Daily Drop: Sports Trivia
+
+
+----------------------------------------------------------------
+SUBTITLE (max 30 chars)
+----------------------------------------------------------------
+One quiz a day - MLB & NFL
+
+
+----------------------------------------------------------------
+PROMOTIONAL TEXT (max 170 chars)
+----------------------------------------------------------------
+A new 7-question sports quiz every day - same questions for everyone. Build your streak, share your score, come back tomorrow.
+
+
+----------------------------------------------------------------
+KEYWORDS (max 100 chars, comma-separated, no spaces)
+----------------------------------------------------------------
+baseball,football,mlb,nfl,quiz,daily,streak,puzzle,wordle,stats,game,challenge,brain,teams,draft
+
+
+----------------------------------------------------------------
+SUPPORT URL
+----------------------------------------------------------------
+https://stonetoad.org/sportsdaily/privacy-policy.html
+
+
+----------------------------------------------------------------
+MARKETING URL (optional)
+----------------------------------------------------------------
+https://stonetoad.org
+
+
+----------------------------------------------------------------
+DESCRIPTION
+----------------------------------------------------------------
+One sports quiz. Every day. Same seven questions for everyone.
+
+Daily Drop is the daily ritual for baseball and football fans. Each day drops a fresh set of 7 questions - 4 MLB, 3 NFL - pulled from real stats and history. Everyone in the world gets the exact same set, so you and your group are always playing the same game.
+
+Answer, lock it in, and watch your card come together like a broadcast stat overlay. Then share your score grid and see who read the box score this morning.
+
+HOW IT WORKS
+- 7 questions a day: 4 MLB, 3 NFL
+- Mix of multiple choice and type-the-answer with autocomplete
+- Real facts: season leaders, draft rounds, colleges, jersey numbers, and more
+- The same set for everyone, every day - no two days repeat
+
+KEEP YOUR STREAK
+- Play every day to build your streak
+- Miss a day and it resets - that's the game
+- Track your accuracy, best streak, and perfect cards on your stats screen
+
+SHARE YOUR SCORE
+- A clean, collectible scorecard built to screenshot
+- Share your result grid and challenge your friends
+- Bragging rights, settled daily
+
+BUILT RIGHT
+- Works offline with instant load, no spinner
+- Light and dark mode
+- No account required. No data collected.
+
+New questions drop daily. How long can you keep the streak alive?
+
+Not affiliated with or endorsed by MLB or NFL.
+
+
+----------------------------------------------------------------
+APP REVIEW NOTES (optional, in App Review Information)
+----------------------------------------------------------------
+Daily Drop is an offline trivia game. No account or login is required. All questions are factual sports data (stats, colleges, draft info). No team or league logos are used, and a disclaimer noting no MLB/NFL affiliation is shown on the results screen.
+
+
+----------------------------------------------------------------
+COPYRIGHT
+----------------------------------------------------------------
+2026 Lucas Wood
