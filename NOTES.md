@@ -19,48 +19,107 @@ generator** builds the question bank from real data and bakes it into the app.
 
 ---
 
-## Setup — resume on a new machine
+## Setup — fresh Mac from scratch (do this on the M4 Mac mini)
 
-Prereqs: **Node 18+ & npm**, **Git**, **Python 3** (generator is stdlib-only —
-no pip installs), and either the **Expo Go** app on a phone or iOS/Android
-simulators. The committed `daily_sets.json` means the app runs immediately —
-you do NOT need to regenerate questions to start.
+Verified end-to-end on a clean M2 Max on 2026-06-30. Follow top to bottom.
+The committed `daily_sets.json` means the app runs immediately — you do NOT
+need to regenerate questions to start.
 
+**0. Baseline (already present on these Macs):** Homebrew, Git, Python 3
+(system 3.9 is fine — generator is stdlib-only, no pip), and full **Xcode**
+(needed for native iOS builds + the Simulator).
+
+**1. Node + npm** — NOT preinstalled. Install via Homebrew:
+```bash
+brew install node          # gets Node (npm bundled)
+node --version && npm --version
+```
+⚠️ **Node version caveat:** brew installs the newest Node (was **26.4.0**),
+which is *ahead* of what Expo SDK 54 officially targets (18/20/22). It worked
+fine (deps install, `expo export` clean). If you ever hit a weird build/metro
+error, first suspect is Node being too new → `brew install node@22` and switch.
+
+**2. Clone + install app deps:**
 ```bash
 git clone https://github.com/elwoodradley/sportsdaily.git
 cd sportsdaily/app
-npm install            # pulls all deps incl. fonts, linear-gradient,
-                       # notifications, sharing, view-shot (all in package.json)
-npx expo start         # scan QR in Expo Go, or press i / a for a simulator
+npm install                # ignore the audit/deprecation noise; do NOT run
+                           # `npm audit fix --force` — it breaks pinned Expo vers
+npx expo start             # scan QR in Expo Go, or press i for the iOS Simulator
 ```
 
-Regenerate / extend the question bank (needs **open internet** — corporate or
-sandboxed networks often block the sports APIs):
+**3. EAS CLI + account** (for cloud builds / store submit):
+```bash
+npm install -g eas-cli
+# `eas register` was REMOVED in eas-cli v20 — sign up in a browser instead:
+#   https://expo.dev/signup   (free)
+eas login                  # account is `stonetoaddev` / wood.luke@protonmail.com
+eas whoami                 # confirm
+```
+The EAS **project is already linked** — `app.json` carries
+`extra.eas.projectId` (eb712a94-…) + `owner: stonetoaddev`, and `app/eas.json`
+holds the build profiles. So on a fresh clone you do NOT re-run `eas init`;
+just `eas login` and you can build. Dashboard:
+https://expo.dev/accounts/stonetoaddev/projects/sportsdaily
 
+**4. First production build** (run interactively — needs your Apple login the
+first time so EAS can generate the iOS distribution cert + provisioning profile;
+let it do this automatically):
+```bash
+cd sportsdaily/app
+eas build --platform ios --profile production      # ~15–20 min in the cloud
+```
+
+**Regenerate / extend the question bank** (needs **open internet** — corporate
+or sandboxed networks block the sports APIs):
 ```bash
 cd ../generator
-python3 generate_questions.py --all 30     # fetch + build 30 days, auto-copies
-                                           # the bundle into app/src/data/
+python3 generate_questions.py --all 365    # fetch + build a full year, auto-
+                                           # copies the bundle into app/src/data/
 ```
 
-**What a more powerful machine unlocks:** three features are stubbed out in
-Expo Go and only run in a **native dev build** — the daily notification
-*firing*, **image sharing**, and (later) **AdMob**. With Xcode / Android Studio
-installed you can make a dev build and test them for real:
+**Regenerate the app icon / splash** (only if changing the art — assets are
+committed, so normally skip). Needs ImageMagick — Expo's own SVG renderer is
+NOT used; icons are drawn with ImageMagick **native primitives** (its built-in
+SVG rasterizer botches `linearGradient` fills → black icon):
+```bash
+brew install imagemagick   # `magick` command
+# see the "Icon + splash" section below for the exact draw commands
+```
 
+**Native dev build** (tests the three Expo-Go-stubbed features for real — daily
+notification *firing*, **image sharing**, **AdMob**):
 ```bash
 cd ../app
-npx expo run:ios       # or: npx expo run:android  (first build is slow)
+npx expo run:ios           # or run:android; first build is slow
 ```
 
 ---
 
 ## Current state (where we are)
 
-- **Two build passes are in** (see sections below): the **design pass**
-  (custom fonts, palette, scorecard, motion) and the **retention/growth pass**
-  (real streak persistence, stats screen, daily reminder, image share, more
-  question types). App bundles clean (`npx expo export`).
+- **THREE build passes are in.** Passes 1–2 (see sections below): the **design
+  pass** (custom fonts, palette, scorecard, motion) and the **retention/growth
+  pass** (real streak persistence, stats screen, daily reminder, image share,
+  more question types). App bundles clean (`npx expo export`).
+
+- **Pass 3 — launch-prep (2026-06-30, this session):** the app is now
+  **build-ready**. What shipped:
+  - **Full year of questions** baked in — 374-question pool → 365 daily sets,
+    2026-06-30 → 2027-06-29 (was only ~30 days).
+  - **Trademark disclaimer** — "Not affiliated with or endorsed by MLB or NFL."
+    on the results footer (`ResultsScreen.jsx`).
+  - **EAS wired** — `app/eas.json` (dev/preview/production profiles); project
+    created + linked on Expo (`stonetoaddev/sportsdaily`, projectId in
+    `app.json`).
+  - **App icon + splash** — real assets in `app/assets/` (blue/red diagonal
+    split + amber double-print check; navy splash via `expo-splash-screen`
+    plugin). Wired in `app.json`. See the "Icon + splash" section for how they
+    were made.
+  - Toolchain proven on a clean Mac (Node via brew, eas-cli, ImageMagick).
+  - **Left to do before store submit:** run the first `eas build` (needs Apple
+    login, interactive), create store listings, optional Google Play account
+    ($25) for Android, optional AdMob, on-device visual QA.
 
 - App **runs in Expo Go** on a physical iPhone. Works.
 - Generator pulls **live data** and produces real questions:
@@ -86,8 +145,15 @@ npx expo run:ios       # or: npx expo run:android  (first build is slow)
 1. Install EAS CLI, `eas login` (Expo account, free).
 2. Enroll Apple Developer ($99/yr) + Google Play ($25 once). **Long pole** —
    Apple approval can take a day+. Start early.
-3. `eas build:configure` → creates `eas.json`.
-4. App icon + splash screen (see design section below).
+3. ~~`eas build:configure` → creates `eas.json`.~~ **DONE** — `app/eas.json`
+   scaffolded (development / preview / production profiles, production channel
+   for future OTA). `eas build:configure` will still link the project on first
+   `eas build` (writes the `projectId` into `app.json` → `extra.eas`).
+4. ~~App icon + splash screen (see design section below).~~ **DONE** — icon +
+   splash live in `app/assets/` (blue/red diagonal split, amber double-print
+   check; navy splash via `expo-splash-screen` plugin). Wired in `app.json`
+   (`icon`, `android.adaptiveIcon`, `web.favicon`, splash plugin). Regenerate
+   from the SVG primitives with ImageMagick if the mark needs tweaking.
 5. `eas build --platform all --profile production`.
 6. Store listings (screenshots, description, privacy, age rating) — manual, in
    App Store Connect + Google Play Console.
@@ -103,8 +169,9 @@ npx expo run:ios       # or: npx expo run:android  (first build is slow)
   day and jumps to the saved result on replay — this scarcity *is* the game.
   To replay during dev, open **Stats → "Reset progress (dev)"** (only rendered
   when `__DEV__`). `computeStats()` rolls history up for the stats screen.
-- **Bundle only has ~30 days of questions.** Generate more (`--all 365`) before
-  a real launch, or the app runs dry.
+- **Bundle now has a full year of questions** (365 days, 2026-06-30 →
+  2027-06-29, 374-question pool). Re-run `--all 365` to roll the window forward
+  as the year burns down, or wire OTA (EAS Update) to push fresh bundles.
 - **MLB question pool is small** (~32–80 depending on seasons/categories). To
   add variety: add more `seasons` and more `categories` in `generator/
   generate_questions.py` (`build_pool`). Some exotic stat keys may not exist in
@@ -137,8 +204,8 @@ npx expo run:ios       # or: npx expo run:android  (first build is slow)
 >   `useReducedMotion()` (`src/hooks/useReducedMotion.js`).
 > - New deps: `expo-font`, `expo-linear-gradient`, `@expo-google-fonts/oswald`,
 >   `@expo-google-fonts/inter`. Verified with `npx expo export` (clean bundle).
-> - **Not yet done:** visual QA on device (run Expo Go), app icon + native splash
->   (`app.json` splash still the old blue — that's part of the EAS/icon step).
+> - **Not yet done:** visual QA on device (run Expo Go). ~~app icon + native
+>   splash~~ **DONE** — see `app/assets/` + `app.json` (splash plugin, navy bg).
 >
 > _Original brief preserved below for reference / further polish._
 
@@ -238,10 +305,57 @@ volume outcome, not an early goal.
 ⚠️ **Trademark:** "MLB"/"NFL" are protected and league/team logos are off-limits.
 Trivia *facts* are fine, but add a visible "Not affiliated with or endorsed by
 MLB/NFL" disclaimer and avoid official logos — especially once monetized.
+**DONE (disclaimer):** results screen footer now renders "Not affiliated with
+or endorsed by MLB or NFL." (`ResultsScreen.jsx`). Logos are still off-limits.
+
+## Icon + splash — how the assets were made
+
+Assets live in `app/assets/` (committed): `icon.png` (1024², no alpha —
+Apple-safe), `adaptive-icon.png` (Android foreground, transparent, check in the
+safe zone), `splash-icon.png` (same mark, for the splash plugin), `favicon.png`.
+
+**Design:** full-bleed **diagonal split** — MLB blue (`#3C7DF2`→`#0C2F73`)
+top-left, NFL red (`#F04A4E`→`#7A1117`) bottom-right — with a **bold white
+check** over an **amber (`#F5A300`) offset** (a trading-card "double-print"
+look; amber = the scoreboard-light/win accent). Navy base `#0C1A30`.
+
+**Gotcha:** ImageMagick's built-in SVG rasterizer mangles `linearGradient`
+fills (renders black). We have no rsvg/resvg/inkscape/cairosvg. So the icons are
+drawn with **ImageMagick native primitives**, and line caps go INSIDE the
+`-draw` string (`-strokelinecap` is not a valid top-level option in this build).
+Rebuild:
+```bash
+cd app
+# base: diagonal blue/red split
+magick -size 1024x1024 -define gradient:angle=135 gradient:'#3C7DF2'-'#0C2F73' /tmp/blue.png
+magick -size 1024x1024 -define gradient:angle=315 gradient:'#F04A4E'-'#7A1117' /tmp/red.png
+magick -size 1024x1024 xc:black -fill white -draw "polygon 1024,0 1024,1024 0,1024" /tmp/mask.png
+magick /tmp/blue.png /tmp/red.png /tmp/mask.png -composite /tmp/base.png
+# icon: seam + double-print check, flattened (no alpha)
+magick /tmp/base.png -fill none \
+  -stroke 'rgba(255,255,255,0.16)' -strokewidth 7 -draw "line 1024,0 0,1024" \
+  -stroke '#F5A300' -strokewidth 108 -draw "stroke-linecap round stroke-linejoin round path 'M 315 548 L 467 698 L 750 376'" \
+  -stroke '#FFFFFF'  -strokewidth 108 -draw "stroke-linecap round stroke-linejoin round path 'M 300 528 L 452 678 L 735 356'" \
+  -background '#0C1A30' -flatten assets/icon.png
+# transparent centered mark (adaptive foreground + splash)
+magick -size 1024x1024 xc:none -fill none \
+  -stroke '#F5A300' -strokewidth 74 -draw "stroke-linecap round stroke-linejoin round path 'M 388 531 L 482 624 L 657 424'" \
+  -stroke '#FFFFFF' -strokewidth 74 -draw "stroke-linecap round stroke-linejoin round path 'M 378 517 L 472 610 L 647 410'" \
+  PNG32:assets/adaptive-icon.png
+cp assets/adaptive-icon.png assets/splash-icon.png
+magick assets/icon.png -resize 48x48 assets/favicon.png
+```
+Wired in `app.json`: top-level `icon`, `android.adaptiveIcon`
+(foreground + `backgroundColor #0C1A30`), `web.favicon`, and the
+`expo-splash-screen` plugin (`image` splash-icon, `backgroundColor #0C1A30`).
+NOTE: icon/splash only show in a real build, **not in Expo Go**.
 
 ## File map
 ```
 generator/generate_questions.py   # builds the question bank from real data
+app/app.json                      # expo config: icon, adaptiveIcon, splash plugin, eas projectId
+app/eas.json                      # EAS build profiles (dev / preview / production)
+app/assets/                       # icon.png, adaptive-icon.png, splash-icon.png, favicon.png
 app/App.js                        # flow: quiz -> results, stats modal, fonts, reminder
 app/src/screens/QuizScreen.jsx    # question card, league-dressed header, transitions
 app/src/screens/ResultsScreen.jsx # the daily scorecard, count-up, image share

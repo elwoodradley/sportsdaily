@@ -181,6 +181,9 @@ export default function ResultsScreen({ score, total, streak, results, questions
         <Text style={[styles.comeBack, { color: theme.textMuted }]}>
           New questions drop tomorrow
         </Text>
+        <Text style={[styles.disclaimer, { color: theme.textMuted }]}>
+          Not affiliated with or endorsed by MLB or NFL.
+        </Text>
       </View>
     </View>
   );
@@ -258,4 +261,11 @@ const styles = StyleSheet.create({
   statsBtn: { marginTop: space(4), alignSelf: 'center', paddingVertical: space(2) },
   statsText: { fontSize: type.sizes.md, ...type.bodySemi },
   comeBack: { marginTop: space(3), fontSize: type.sizes.sm, ...type.bodyMed, textAlign: 'center' },
+  disclaimer: {
+    marginTop: space(2),
+    fontSize: type.sizes.xs,
+    ...type.bodyMed,
+    textAlign: 'center',
+    opacity: 0.7,
+  },
 });

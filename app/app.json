@@ -5,23 +5,40 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "resizeMode": "contain",
-      "backgroundColor": "#185FA5"
-    },
+    "icon": "./assets/icon.png",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "org.stonetoad.sportsdaily"
     },
     "android": {
-      "package": "org.stonetoad.sportsdaily"
+      "package": "org.stonetoad.sportsdaily",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0C1A30"
+      }
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font",
-      "expo-notifications"
-    ]
+      "expo-notifications",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#0C1A30"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "eb712a94-09d9-4c30-a019-4b447bb3ab4d"
+      }
+    },
+    "owner": "stonetoaddev"
   }
 }
