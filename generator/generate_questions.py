@@ -49,7 +49,10 @@ def _get_csv(url):
 # Counting stats whose leader value is a whole number we can quiz on ("how many
 # home runs did the leader hit?"). Rate stats (ERA, AVG) are excluded — plausible
 # numeric distractors for a decimal don't read cleanly.
-COUNTABLE_STATS = {"strikeOuts", "wins", "homeRuns", "runsBattedIn", "stolenBases", "hits"}
+COUNTABLE_STATS = {
+    "strikeOuts", "wins", "saves", "homeRuns", "runsBattedIn", "stolenBases",
+    "hits", "doubles", "triples", "runs", "totalBases", "baseOnBalls",
+}
 
 
 def _value_options(value):
@@ -130,6 +133,78 @@ def mlb_leader_questions(seasons, categories):
     return out
 
 
+# Fans call schools by nicknames. Without these, a player who KNOWS DK Metcalf
+# went to Ole Miss types "Ole Miss" and gets marked wrong (the canonical answer
+# is "Mississippi"). Keys are the exact nflverse `college` strings; values are
+# extra accepted spellings. The app normalizes case/punctuation at match time,
+# so "NC State" etc. don't need every capitalization. Abbreviations that are
+# genuinely ambiguous (OSU = Ohio/Oregon/Oklahoma State) are intentionally
+# omitted so we never accept a wrong school.
+COLLEGE_ALIASES = {
+    "Mississippi": ["Ole Miss"],
+    "Mississippi State": ["Miss State"],
+    "Southern California": ["USC"],
+    "Louisiana State": ["LSU"],
+    "Texas Christian": ["TCU"],
+    "Brigham Young": ["BYU"],
+    "Central Florida": ["UCF"],
+    "Southern Methodist": ["SMU"],
+    "North Carolina": ["UNC"],
+    "North Carolina State": ["NC State", "NCSU"],
+    "Pittsburgh": ["Pitt"],
+    "Massachusetts": ["UMass"],
+    "Connecticut": ["UConn"],
+    "Nevada-Las Vegas": ["UNLV"],
+    "Alabama-Birmingham": ["UAB"],
+    "Texas-El Paso": ["UTEP"],
+    "Texas-San Antonio": ["UTSA"],
+    "Louisiana-Lafayette": ["Louisiana", "ULL"],
+    "Louisiana-Monroe": ["ULM"],
+    "Louisiana Tech": ["La Tech"],
+    "Southern Mississippi": ["Southern Miss", "USM"],
+    "Appalachian State": ["App State"],
+    "Middle Tennessee State": ["Middle Tennessee", "MTSU"],
+    "Florida International": ["FIU"],
+    "Florida Atlantic": ["FAU"],
+    "Western Kentucky": ["WKU"],
+    "East Carolina": ["ECU"],
+    "Coastal Carolina": ["CCU"],
+    "Notre Dame": ["ND"],
+    "Penn State": ["PSU"],
+    "Florida State": ["FSU"],
+    "Boston College": ["BC"],
+    "Virginia Tech": ["VT", "Va Tech"],
+    "Georgia Tech": ["GT"],
+    "West Virginia": ["WVU"],
+    "Texas A&M": ["A&M"],
+    "San Diego State": ["SDSU"],
+    "San Jose State": ["SJSU"],
+    "Arizona State": ["ASU"],
+    "Kansas State": ["K-State", "KSU"],
+    "Georgia": ["UGA"],
+    "Alabama": ["Bama"],
+    "Oklahoma": ["OU"],
+    "Miami (FL)": ["Miami", "The U"],
+    "Miami (OH)": ["Miami Ohio"],
+    "Minn. State-Mankato": ["Minnesota State", "Minnesota State-Mankato", "Mankato"],
+}
+
+
+def college_accept(college):
+    """Canonical name + curated nicknames + an auto 'State'->'St' short form."""
+    accept = [college]
+    accept.extend(COLLEGE_ALIASES.get(college, []))
+    if " State" in college:
+        accept.append(college.replace(" State", " St"))
+    # de-dupe while preserving order
+    seen, out = set(), []
+    for a in accept:
+        if a.lower() not in seen:
+            seen.add(a.lower())
+            out.append(a)
+    return out
+
+
 def nfl_college_questions(rows, relevant_ids, max_q=200):
     notable_pos = {"QB", "RB", "WR", "TE"}
 
@@ -154,7 +229,7 @@ def nfl_college_questions(rows, relevant_ids, max_q=200):
             "type": "typed",
             "prompt": f"What college did {r['full_name']} attend?",
             "answer": r["college"],
-            "accept": [r["college"]],
+            "accept": college_accept(r["college"]),
             "autocomplete_pool_ref": "nfl_colleges",
             "valid_as_of": "2024",
             "source": "nflverse",
@@ -292,16 +367,27 @@ def build_pool():
     pool = {"questions": [], "autocomplete_pools": {}}
 
     print("[MLB] fetching season leaders...")
-    seasons = [2021, 2022, 2023, 2024]
+    # More seasons + more stat categories = a bigger MLB pool, so daily players
+    # stop seeing the same handful of MLB questions on repeat. 2020 is skipped
+    # (60-game COVID season — leader totals are misleadingly low). Unknown stat
+    # keys just get skipped by mlb_leader_questions(), so extra rows are safe.
+    seasons = [2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024]
     categories = [
         ("pitching", "strikeOuts", "strikeouts"),
         ("pitching", "wins", "wins"),
+        ("pitching", "saves", "saves"),
         ("pitching", "earnedRunAverage", "ERA (lowest)"),
         ("hitting", "homeRuns", "home runs"),
         ("hitting", "battingAverage", "batting average"),
         ("hitting", "runsBattedIn", "RBIs"),
         ("hitting", "stolenBases", "stolen bases"),
         ("hitting", "hits", "hits"),
+        ("hitting", "doubles", "doubles"),
+        ("hitting", "triples", "triples"),
+        ("hitting", "runs", "runs scored"),
+        ("hitting", "totalBases", "total bases"),
+        ("hitting", "baseOnBalls", "walks"),
+        ("hitting", "onBasePlusSlugging", "OPS"),
     ]
     mlb_q = mlb_leader_questions(seasons, categories)
     print(f"  -> {len(mlb_q)} MLB questions")

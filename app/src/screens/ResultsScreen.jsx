@@ -184,6 +184,9 @@ export default function ResultsScreen({ score, total, streak, results, questions
         <Text style={[styles.disclaimer, { color: theme.textMuted }]}>
           Not affiliated with or endorsed by MLB or NFL.
         </Text>
+        <Text style={[styles.studio, { color: theme.textMuted }]}>
+          A Stone Toad joint
+        </Text>
       </View>
     </View>
   );
@@ -267,5 +270,15 @@ const styles = StyleSheet.create({
     ...type.bodyMed,
     textAlign: 'center',
     opacity: 0.7,
+  },
+  // Studio signature — the recurring "back of the card" credit shared across
+  // Stone Toad apps. Match Flyspeck's exact wording: "A Stone Toad joint".
+  studio: {
+    marginTop: space(3),
+    fontSize: type.sizes.xs,
+    ...type.displaySemi,
+    letterSpacing: 1.5,
+    textAlign: 'center',
+    opacity: 0.5,
   },
 });

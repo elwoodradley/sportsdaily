@@ -21,9 +21,11 @@ export async function recordResult(dateStr, score, total) {
     // already played today; don't double-count the streak
     p.history[dateStr] = { score, total };
   } else {
-    const yesterday = new Date(dateStr);
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yStr = yesterday.toISOString().slice(0, 10);
+    // Compute "yesterday" in the SAME local-date space as dateStr. Constructing
+    // the Date from the numeric parts keeps it local (parsing "YYYY-MM-DD"
+    // directly would be UTC) and JS normalizes day 0 / -1 across month/year ends.
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const yStr = fmtLocalDate(new Date(y, m - 1, d - 1));
     p.streak = p.lastPlayed === yStr ? p.streak + 1 : 1;
     p.lastPlayed = dateStr;
     p.history[dateStr] = { score, total };
@@ -39,8 +41,18 @@ export async function resetProgress() {
   await AsyncStorage.removeItem(KEY);
 }
 
+// Local-date "YYYY-MM-DD" (NOT UTC). Using toISOString() here would roll the
+// daily puzzle over at UTC midnight — mid-evening for the Americas — instead of
+// the player's own midnight.
+function fmtLocalDate(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 export function todayStr() {
-  return new Date().toISOString().slice(0, 10);
+  return fmtLocalDate(new Date());
 }
 
 // Roll up the saved history into the numbers the stats screen shows.
