@@ -8,7 +8,10 @@
     "icon": "./assets/icon.png",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "org.stonetoad.sportsdaily"
+      "bundleIdentifier": "org.stonetoad.sportsdaily",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "org.stonetoad.sportsdaily",
@@ -39,6 +42,12 @@
         "projectId": "eb712a94-09d9-4c30-a019-4b447bb3ab4d"
       }
     },
-    "owner": "stonetoaddev"
+    "owner": "stonetoaddev",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/eb712a94-09d9-4c30-a019-4b447bb3ab4d"
+    }
   }
 }
