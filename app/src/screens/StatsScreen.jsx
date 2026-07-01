@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     paddingVertical: space(4),
     paddingHorizontal: space(4),
   },
-  tileValue: { fontSize: type.sizes.huge, ...type.display, lineHeight: type.sizes.huge },
+  tileValue: { fontSize: type.sizes.huge, ...type.display, lineHeight: Math.round(type.sizes.huge * 1.2) },
   tileLabel: { fontSize: type.sizes.sm, ...type.bodySemi, marginTop: space(1) },
   panel: { borderWidth: 1, borderRadius: radius.lg, padding: space(5), marginTop: space(2) },
   panelTitle: { fontSize: type.sizes.lg, ...type.displaySemi, marginBottom: space(4) },

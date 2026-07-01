@@ -34,10 +34,23 @@ need to regenerate questions to start.
 brew install node          # gets Node (npm bundled)
 node --version && npm --version
 ```
-⚠️ **Node version caveat:** brew installs the newest Node (was **26.4.0**),
-which is *ahead* of what Expo SDK 54 officially targets (18/20/22). It worked
-fine (deps install, `expo export` clean). If you ever hit a weird build/metro
-error, first suspect is Node being too new → `brew install node@22` and switch.
+⚠️ **Node version caveat — CONFIRMED problem, use Node 22.** brew installs the
+newest Node (was **26.4.0**), which is *ahead* of what Expo SDK 54 targets
+(18/20/22). Bundling is fine on 26 (`npm install`, `expo export` clean), BUT
+**`npx expo start` fails to launch the iOS Simulator on Node 26**: the
+"Fetching Expo Go" step dies with `TypeError: fetch failed` every time (Node 26's
+networking stack breaks Expo's downloader — the exact same URLs download fine via
+curl/plain fetch, so it's not the network). Verified on the M4 mini 2026-06-30.
+Fix — install Node 22 alongside 26 and run Expo under it:
+```bash
+brew install node@22                                 # keg-only, sits beside 26
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"    # Node 22 for this shell
+node --version                                        # confirm v22.x
+cd sportsdaily/app && npx expo start                  # press i, then choose
+                                                      # "Proceed anonymously"
+```
+(To make it permanent instead of per-shell: add that PATH line to `~/.zshrc`, or
+`brew link --overwrite node@22`.)
 
 **2. Clone + install app deps:**
 ```bash
@@ -97,6 +110,17 @@ npx expo run:ios           # or run:android; first build is slow
 ---
 
 ## Current state (where we are)
+
+- **Pass 4 — first Simulator run + QA (2026-06-30, M4 mini):** the app now runs
+  in the **iOS Simulator** (Expo Go, iPhone 17 Pro, iOS 26.5). Getting there:
+  installed the iOS runtime (`xcodebuild -downloadPlatform iOS`, 8.5 GB), then hit
+  the Node 26 `expo start` bug (see Node caveat above) → fixed with **Node 22**.
+  QA found + fixed a **display-number clipping bug**: `lineHeight` was set equal
+  to `fontSize` on the big Oswald numerals, so iOS shaved their tops. Fixed by
+  bumping to `1.2×` in `StatsScreen.jsx` (`tileValue`) and `ResultsScreen.jsx`
+  (`score`). Verified in light + dark on Results and Stats. Dark mode confirmed
+  first-class on both screens. Still un-QA'd: the quiz question cards (MC + typed)
+  in dark — use Stats → "Reset progress (dev)" to replay and check.
 
 - **THREE build passes are in.** Passes 1–2 (see sections below): the **design
   pass** (custom fonts, palette, scorecard, motion) and the **retention/growth

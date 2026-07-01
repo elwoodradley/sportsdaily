@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   marks: { flexDirection: 'row', gap: space(1) },
   markEmoji: { fontSize: 22 },
   scoreRow: { flexDirection: 'row', alignItems: 'flex-end' },
-  score: { color: '#FFFFFF', fontSize: type.sizes.mega, ...type.display, lineHeight: type.sizes.mega },
+  score: { color: '#FFFFFF', fontSize: type.sizes.mega, ...type.display, lineHeight: Math.round(type.sizes.mega * 1.2) },
   scoreTotal: {
     color: 'rgba(255,255,255,0.55)',
     fontSize: type.sizes.xxl,
