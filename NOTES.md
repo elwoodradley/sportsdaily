@@ -5,6 +5,68 @@
 
 ---
 
+## ⏭️ RESUME HERE — finish the App Store launch (written 2026-06-30 night)
+
+**Picking up 2026-07-01 at work on the Dell XPS** (NOT the M4 Mac mini this was
+built on). Read the machine note below — it changes what you can/can't do.
+
+### ⚠️ XPS (Windows/Linux) vs the M4 mini — what's different
+- **EAS Build + Submit run in Expo's CLOUD**, so you build and ship the iOS app
+  **from the XPS just fine** — you do NOT need a Mac to build/submit. That's the
+  whole point of EAS.
+- **You CANNOT run the iOS Simulator on the XPS** (needs macOS/Xcode). So no
+  local visual QA tomorrow. That's OK — the app is already QA'd in the sim, and
+  the simulator isn't needed to build or submit.
+- **Install Node 22 on the XPS too** (nodejs.org LTS or nvm). Same reasoning as
+  the Node caveat above — don't grab the bleeding-edge version. `eas-cli` is
+  cross-platform.
+
+### Setup on the XPS (fresh)
+1. Install **Node 22 LTS** + Git.
+2. `npm install -g eas-cli`
+3. `git clone https://github.com/elwoodradley/sportsdaily.git` (or `git pull` if
+   already cloned) → `cd sportsdaily/app && npm install`
+4. `eas login` (account `stonetoaddev` / wood.luke@protonmail.com)
+
+### Then finish launch — IN THIS ORDER
+1. **Build:** `eas build --platform ios --profile production`
+   - First run is interactive: **Apple login + 2FA**, then say **yes** to
+     auto-create the bundle id + generate the distribution cert/provisioning
+     profile. ~15–25 min in the cloud (queue + build). It prints a URL to watch.
+2. **Store listing** at appstoreconnect.apple.com (manual, browser): app record,
+   name/subtitle/description/keywords, category **Games → Trivia**, **App
+   Privacy = "Data Not Collected"** (no accounts/server), a privacy-policy URL,
+   age rating.
+   - ⚠️ **Screenshots:** can't be captured from a sim on the XPS. Either grab
+     them from the M4 sim before leaving, or from a real iPhone via TestFlight
+     once the build is up. (Claude can capture them from a Mac sim.)
+3. **Submit:** `eas submit --platform ios --profile production` → uploads the
+   build; attach it to the listing in App Store Connect.
+4. **Submit for review** in ASC. Review is ~24–48h. Watch the MLB/NFL trademark
+   stuff (the disclaimer helps; no logos).
+
+### What was done the night of 2026-06-30 (already pushed — just `git pull`)
+- **App ran in the iOS Simulator** for the first time (Node 22 fix — see caveat).
+- **Fixes 1–3** (QA pass): MLB question pool **56 → 216** (kills repetition),
+  typed answers now accept **college nicknames** (Ole Miss, SMU, UNC, …), and
+  the daily date is computed in **local time not UTC**.
+- **Studio credit** "A Stone Toad joint" added to the results footer (matches
+  Flyspeck's wording).
+
+### Still open (NOT launch blockers — decide/track)
+- **Content cliff:** after 2027-06-29 the app replays day 1 forever. Refill via
+  OTA (EAS Update) before then.
+- **Friends leaderboard:** the planned fast-follow. Needs a backend — recommended
+  **Supabase + Sign in with Apple**. Launch v1 without it (manual share is the
+  social hook for now).
+- **Apple enrollment type:** check whether you enrolled as **individual** (store
+  seller shows your personal name) or **organization** (shows "Stone Toad").
+  Switching later is a hassle — sort it now if you want the studio as the seller.
+- **On-device QA:** only tested in the Simulator. Do a pass on a real iPhone once
+  you have a build (notifications/share/AdMob only work in a real build anyway).
+
+---
+
 ## What this is
 
 A geohistory.gg-style **daily sports quiz** for MLB + NFL. Every day, everyone
